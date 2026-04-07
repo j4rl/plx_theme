@@ -4,7 +4,7 @@ Theme URI: https://j4rl.se/themes/jarl-parallax
 Author: ©j4rl
 Author URI: https://j4rl.se
 Description: A responsive WordPress parallax theme with gradients, imagery, Google Font selection, and customizable behavior.
-Version: 1.2.0
+Version: 1.2.1
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
@@ -555,10 +555,29 @@ textarea {
   gap: 1.15rem;
   padding: 1rem;
   border-radius: 28px;
-  background: var(--plx-post-bg);
+  position: relative;
+  isolation: isolate;
+  background: var(--plx-page-panel-bg, var(--plx-post-bg));
   border: 1px solid var(--plx-panel-border);
   box-shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
   overflow: hidden;
+}
+
+.page-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--plx-page-panel-image, none);
+  background-size: cover;
+  background-position: center;
+  opacity: var(--plx-page-panel-image-opacity, 0);
+  pointer-events: none;
+}
+
+.page-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .page-panel--full {
@@ -604,6 +623,9 @@ textarea {
 .page-panel__body--full {
   justify-content: flex-start;
   padding: 1rem 0.25rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
 }
 
 .page-panel__title {
@@ -620,6 +642,7 @@ textarea {
 
 .page-panel__content {
   color: var(--plx-text);
+  max-width: 100%;
 }
 
 .page-panel__content > *:first-child {
@@ -650,6 +673,13 @@ textarea {
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
+}
+
+.page-panel__content .wp-block-cover,
+.page-panel__content .wp-block-group,
+.page-panel__content .wp-block-columns,
+.page-panel__content .wp-block-media-text {
+  max-width: 100%;
 }
 
 .page-panel__button {
@@ -695,6 +725,10 @@ textarea {
 
 .page-panel--full.page-panel--compact {
   align-items: start;
+}
+
+.page-panel--full.page-panel--no-media .page-panel__body--full {
+  padding: 1.5rem;
 }
 
 .content-block {

@@ -146,6 +146,105 @@ function plx_parallax_get_featured_pages_display_choices() {
     );
 }
 
+function plx_parallax_get_featured_page_background_base_choices() {
+    return array(
+        'gradient' => __('Gradient', 'plx-parallax'),
+        'color'    => __('Solid color', 'plx-parallax'),
+    );
+}
+
+function plx_parallax_get_featured_page_background_defaults($slot) {
+    $presets = array(
+        1 => array(
+            'base'          => 'gradient',
+            'gradient_1'    => '#0f172a',
+            'gradient_2'    => '#1d4ed8',
+            'color'         => '#172554',
+            'image'         => '',
+            'image_opacity' => 0.34,
+        ),
+        2 => array(
+            'base'          => 'gradient',
+            'gradient_1'    => '#111827',
+            'gradient_2'    => '#ea580c',
+            'color'         => '#7c2d12',
+            'image'         => '',
+            'image_opacity' => 0.34,
+        ),
+        3 => array(
+            'base'          => 'gradient',
+            'gradient_1'    => '#1f2937',
+            'gradient_2'    => '#14b8a6',
+            'color'         => '#134e4a',
+            'image'         => '',
+            'image_opacity' => 0.34,
+        ),
+        4 => array(
+            'base'          => 'gradient',
+            'gradient_1'    => '#312e81',
+            'gradient_2'    => '#ec4899',
+            'color'         => '#831843',
+            'image'         => '',
+            'image_opacity' => 0.34,
+        ),
+        5 => array(
+            'base'          => 'gradient',
+            'gradient_1'    => '#0f172a',
+            'gradient_2'    => '#f59e0b',
+            'color'         => '#78350f',
+            'image'         => '',
+            'image_opacity' => 0.34,
+        ),
+        6 => array(
+            'base'          => 'gradient',
+            'gradient_1'    => '#0b132b',
+            'gradient_2'    => '#5bc0be',
+            'color'         => '#1c2541',
+            'image'         => '',
+            'image_opacity' => 0.34,
+        ),
+    );
+
+    return isset($presets[$slot]) ? $presets[$slot] : $presets[1];
+}
+
+function plx_parallax_get_featured_page_background_default($slot, $key) {
+    $defaults = plx_parallax_get_featured_page_background_defaults($slot);
+    return isset($defaults[$key]) ? $defaults[$key] : '';
+}
+
+function plx_parallax_get_featured_page_panel_style($slot) {
+    $base_mode     = get_theme_mod('plx_featured_page_' . $slot . '_background_base', plx_parallax_get_featured_page_background_default($slot, 'base'));
+    $gradient_1    = get_theme_mod('plx_featured_page_' . $slot . '_background_gradient_1', plx_parallax_get_featured_page_background_default($slot, 'gradient_1'));
+    $gradient_2    = get_theme_mod('plx_featured_page_' . $slot . '_background_gradient_2', plx_parallax_get_featured_page_background_default($slot, 'gradient_2'));
+    $solid_color   = get_theme_mod('plx_featured_page_' . $slot . '_background_color', plx_parallax_get_featured_page_background_default($slot, 'color'));
+    $image         = get_theme_mod('plx_featured_page_' . $slot . '_background_image', plx_parallax_get_featured_page_background_default($slot, 'image'));
+    $image_opacity = (float) get_theme_mod('plx_featured_page_' . $slot . '_background_image_opacity', plx_parallax_get_featured_page_background_default($slot, 'image_opacity'));
+
+    $base_choices = plx_parallax_get_featured_page_background_base_choices();
+    $base_mode    = isset($base_choices[$base_mode]) ? $base_mode : 'gradient';
+    $image_opacity = max(0, min(1, $image_opacity));
+
+    if ('color' === $base_mode) {
+        $background = $solid_color;
+    } else {
+        $background = 'linear-gradient(155deg, ' . $gradient_1 . ', ' . $gradient_2 . ')';
+    }
+
+    $vars = array(
+        '--plx-page-panel-bg'            => $background,
+        '--plx-page-panel-image'         => $image ? 'url("' . esc_url_raw($image) . '")' : 'none',
+        '--plx-page-panel-image-opacity' => $image ? number_format($image_opacity, 2, '.', '') : '0',
+    );
+
+    $style = '';
+    foreach ($vars as $name => $value) {
+        $style .= $name . ':' . $value . ';';
+    }
+
+    return $style;
+}
+
 function plx_parallax_get_featured_pages() {
     $sequence_raw = get_theme_mod('plx_featured_pages_sequence', plx_parallax_get_default('plx_featured_pages_sequence'));
     $sequence     = array_filter(array_map('absint', explode(',', (string) $sequence_raw)));

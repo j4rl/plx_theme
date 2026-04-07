@@ -105,6 +105,11 @@ function plx_parallax_sanitize_featured_pages_display($value) {
     return isset($choices[$value]) ? $value : 'cards';
 }
 
+function plx_parallax_sanitize_featured_page_background_base($value) {
+    $choices = plx_parallax_get_featured_page_background_base_choices();
+    return isset($choices[$value]) ? $value : 'gradient';
+}
+
 function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_panel('plx_theme_options', array(
         'title'    => __('PLX Theme Options', 'plx-parallax'),
@@ -466,6 +471,71 @@ function plx_parallax_customize_register($wp_customize) {
             'section'     => 'plx_content_section',
             'type'        => 'select',
             'choices'     => plx_parallax_get_page_layout_choices(),
+        ));
+
+        $wp_customize->add_setting('plx_featured_page_' . $index . '_background_base', array(
+            'default'           => plx_parallax_get_featured_page_background_default($index, 'base'),
+            'sanitize_callback' => 'plx_parallax_sanitize_featured_page_background_base',
+            'transport'         => 'refresh',
+        ));
+        $wp_customize->add_control('plx_featured_page_' . $index . '_background_base', array(
+            'label'       => sprintf(__('Page Slot %d Background Base', 'plx-parallax'), $index),
+            'description' => __('Choose whether the panel background starts from a gradient or a single color. You can also place an image on top with opacity below.', 'plx-parallax'),
+            'section'     => 'plx_content_section',
+            'type'        => 'select',
+            'choices'     => plx_parallax_get_featured_page_background_base_choices(),
+        ));
+
+        $wp_customize->add_setting('plx_featured_page_' . $index . '_background_gradient_1', array(
+            'default'           => plx_parallax_get_featured_page_background_default($index, 'gradient_1'),
+            'sanitize_callback' => 'sanitize_hex_color',
+        ));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'plx_featured_page_' . $index . '_background_gradient_1', array(
+            'label'   => sprintf(__('Page Slot %d Gradient Color 1', 'plx-parallax'), $index),
+            'section' => 'plx_content_section',
+        )));
+
+        $wp_customize->add_setting('plx_featured_page_' . $index . '_background_gradient_2', array(
+            'default'           => plx_parallax_get_featured_page_background_default($index, 'gradient_2'),
+            'sanitize_callback' => 'sanitize_hex_color',
+        ));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'plx_featured_page_' . $index . '_background_gradient_2', array(
+            'label'   => sprintf(__('Page Slot %d Gradient Color 2', 'plx-parallax'), $index),
+            'section' => 'plx_content_section',
+        )));
+
+        $wp_customize->add_setting('plx_featured_page_' . $index . '_background_color', array(
+            'default'           => plx_parallax_get_featured_page_background_default($index, 'color'),
+            'sanitize_callback' => 'sanitize_hex_color',
+        ));
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'plx_featured_page_' . $index . '_background_color', array(
+            'label'   => sprintf(__('Page Slot %d Solid Background Color', 'plx-parallax'), $index),
+            'section' => 'plx_content_section',
+        )));
+
+        $wp_customize->add_setting('plx_featured_page_' . $index . '_background_image', array(
+            'default'           => plx_parallax_get_featured_page_background_default($index, 'image'),
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'plx_featured_page_' . $index . '_background_image', array(
+            'label'       => sprintf(__('Page Slot %d Background Image', 'plx-parallax'), $index),
+            'description' => __('Optional image overlay for the panel background.', 'plx-parallax'),
+            'section'     => 'plx_content_section',
+        )));
+
+        $wp_customize->add_setting('plx_featured_page_' . $index . '_background_image_opacity', array(
+            'default'           => plx_parallax_get_featured_page_background_default($index, 'image_opacity'),
+            'sanitize_callback' => 'plx_parallax_sanitize_float',
+        ));
+        $wp_customize->add_control('plx_featured_page_' . $index . '_background_image_opacity', array(
+            'label'       => sprintf(__('Page Slot %d Background Image Opacity', 'plx-parallax'), $index),
+            'section'     => 'plx_content_section',
+            'type'        => 'number',
+            'input_attrs' => array(
+                'min'  => 0,
+                'max'  => 1,
+                'step' => 0.05,
+            ),
         ));
     }
 

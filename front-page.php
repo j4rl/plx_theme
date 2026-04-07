@@ -107,8 +107,9 @@ $featured_pages_display = get_theme_mod('plx_featured_pages_display', plx_parall
                         $layout_class   = 'page-panel page-panel--' . $page_item['layout'];
                         $layout_class  .= 'full' === $featured_pages_display ? ' page-panel--full' : ' page-panel--cards';
                         $layout_class  .= has_post_thumbnail($page) ? '' : ' page-panel--no-media';
+                        $panel_style    = plx_parallax_get_featured_page_panel_style($page_item['slot']);
                         ?>
-                        <article class="<?php echo esc_attr($layout_class); ?>">
+                        <article class="<?php echo esc_attr($layout_class); ?>" style="<?php echo esc_attr($panel_style); ?>">
                             <?php if (has_post_thumbnail($page)) : ?>
                                 <a class="page-panel__media" href="<?php echo esc_url(get_permalink($page)); ?>">
                                     <?php echo get_the_post_thumbnail($page, 'plx-featured-page'); ?>
