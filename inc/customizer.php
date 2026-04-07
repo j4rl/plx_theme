@@ -100,6 +100,11 @@ function plx_parallax_sanitize_layout_choice($value) {
     return isset($choices[$value]) ? $value : 'split-left';
 }
 
+function plx_parallax_sanitize_featured_pages_display($value) {
+    $choices = plx_parallax_get_featured_pages_display_choices();
+    return isset($choices[$value]) ? $value : 'cards';
+}
+
 function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_panel('plx_theme_options', array(
         'title'    => __('PLX Theme Options', 'plx-parallax'),
@@ -413,6 +418,19 @@ function plx_parallax_customize_register($wp_customize) {
         'label'   => __('Parallax Pages Button Text', 'plx-parallax'),
         'section' => 'plx_content_section',
         'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_featured_pages_display', array(
+        'default'           => plx_parallax_get_default('plx_featured_pages_display'),
+        'sanitize_callback' => 'plx_parallax_sanitize_featured_pages_display',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control('plx_featured_pages_display', array(
+        'label'       => __('Parallax Pages Display', 'plx-parallax'),
+        'description' => __('Choose between summary cards or rendering each selected page with its full content in the chosen order.', 'plx-parallax'),
+        'section'     => 'plx_content_section',
+        'type'        => 'select',
+        'choices'     => plx_parallax_get_featured_pages_display_choices(),
     ));
 
     $wp_customize->add_setting('plx_featured_pages_sequence', array(

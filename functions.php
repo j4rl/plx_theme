@@ -68,6 +68,7 @@ function plx_parallax_get_theme_defaults() {
         'plx_featured_pages_title'      => __('Parallax pages', 'plx-parallax'),
         'plx_featured_pages_text'       => __('Select pages in the theme settings and decide exactly how they should stack through the front page experience.', 'plx-parallax'),
         'plx_featured_pages_cta_text'   => __('Open page', 'plx-parallax'),
+        'plx_featured_pages_display'    => 'cards',
         'plx_featured_pages_sequence'   => '1,2,3,4,5,6',
         'plx_featured_page_1_id'        => 0,
         'plx_featured_page_1_layout'    => 'split-left',
@@ -98,6 +99,7 @@ function plx_parallax_get_default($key) {
 function plx_parallax_theme_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
+    add_image_size('plx-featured-page', 1200, 900, true);
     add_theme_support('custom-logo', array(
         'height'      => 80,
         'width'       => 280,
@@ -134,6 +136,13 @@ function plx_parallax_get_page_layout_choices() {
         'split-right' => __('Image right', 'plx-parallax'),
         'stacked'     => __('Stacked', 'plx-parallax'),
         'compact'     => __('Compact', 'plx-parallax'),
+    );
+}
+
+function plx_parallax_get_featured_pages_display_choices() {
+    return array(
+        'cards' => __('Cards', 'plx-parallax'),
+        'full'  => __('Full content', 'plx-parallax'),
     );
 }
 

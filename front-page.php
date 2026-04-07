@@ -12,6 +12,7 @@ $show_recent_posts  = get_theme_mod('plx_show_recent_posts', plx_parallax_get_de
 $show_cta_section   = get_theme_mod('plx_show_cta_section', plx_parallax_get_default('plx_show_cta_section'));
 $recent_posts_count = absint(get_theme_mod('plx_recent_posts_count', plx_parallax_get_default('plx_recent_posts_count')));
 $featured_pages     = plx_parallax_get_featured_pages();
+$featured_pages_display = get_theme_mod('plx_featured_pages_display', plx_parallax_get_default('plx_featured_pages_display'));
 ?>
 <main>
     <section class="hero">
@@ -95,30 +96,61 @@ $featured_pages     = plx_parallax_get_featured_pages();
                     <h2 class="archive-grid__title js-plx-pages-title"><?php echo esc_html(get_theme_mod('plx_featured_pages_title', plx_parallax_get_default('plx_featured_pages_title'))); ?></h2>
                     <p class="js-plx-pages-text"><?php echo esc_html(get_theme_mod('plx_featured_pages_text', plx_parallax_get_default('plx_featured_pages_text'))); ?></p>
                 </div>
-                <div class="page-stack">
+                <div class="page-stack page-stack--<?php echo esc_attr($featured_pages_display); ?>">
+                    <?php
+                    global $post;
+                    $original_post = $post;
+                    ?>
                     <?php foreach ($featured_pages as $page_item) : ?>
-                        <article class="page-panel page-panel--<?php echo esc_attr($page_item['layout']); ?>">
-                            <a class="page-panel__media parallax-layer" data-depth="0.05" href="<?php echo esc_url(get_permalink($page_item)); ?>">
-                                <?php
-                                if (has_post_thumbnail($page_item['page'])) {
-                                    echo get_the_post_thumbnail($page_item['page'], 'large');
-                                } else {
-                                    echo '<span class="page-panel__fallback" aria-hidden="true"></span>';
-                                }
-                                ?>
-                            </a>
-                            <div class="page-panel__body">
-                                <span class="post-card__meta"><?php echo esc_html(get_post_field('post_name', $page_item['page']->ID)); ?></span>
+                        <?php
+                        $page           = $page_item['page'];
+                        $layout_class   = 'page-panel page-panel--' . $page_item['layout'];
+                        $layout_class  .= 'full' === $featured_pages_display ? ' page-panel--full' : ' page-panel--cards';
+                        $layout_class  .= has_post_thumbnail($page) ? '' : ' page-panel--no-media';
+                        ?>
+                        <article class="<?php echo esc_attr($layout_class); ?>">
+                            <?php if (has_post_thumbnail($page)) : ?>
+                                <a class="page-panel__media" href="<?php echo esc_url(get_permalink($page)); ?>">
+                                    <?php echo get_the_post_thumbnail($page, 'plx-featured-page'); ?>
+                                </a>
+                            <?php elseif ('cards' === $featured_pages_display) : ?>
+                                <span class="page-panel__media">
+                                    <span class="page-panel__fallback" aria-hidden="true"></span>
+                                </span>
+                            <?php endif; ?>
+
+                            <div class="page-panel__body <?php echo 'full' === $featured_pages_display ? 'page-panel__body--full' : ''; ?>">
+                                <span class="post-card__meta"><?php echo esc_html(get_post_field('post_name', $page->ID)); ?></span>
                                 <h3 class="page-panel__title">
-                                    <a href="<?php echo esc_url(get_permalink($page_item['page'])); ?>"><?php echo esc_html(get_the_title($page_item['page'])); ?></a>
+                                    <a href="<?php echo esc_url(get_permalink($page)); ?>"><?php echo esc_html(get_the_title($page)); ?></a>
                                 </h3>
-                                <p><?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt($page_item['page'])), 22)); ?></p>
-                                <a class="plx-button plx-button--ghost page-panel__button js-plx-pages-button" href="<?php echo esc_url(get_permalink($page_item['page'])); ?>">
+
+                                <?php if ('full' === $featured_pages_display) : ?>
+                                    <div class="page-panel__content">
+                                        <?php
+                                        $post = $page;
+                                        setup_postdata($post);
+                                        the_content();
+                                        ?>
+                                    </div>
+                                <?php else : ?>
+                                    <p><?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt($page)), 22)); ?></p>
+                                <?php endif; ?>
+
+                                <a class="plx-button plx-button--ghost page-panel__button js-plx-pages-button" href="<?php echo esc_url(get_permalink($page)); ?>">
                                     <?php echo esc_html(get_theme_mod('plx_featured_pages_cta_text', plx_parallax_get_default('plx_featured_pages_cta_text'))); ?>
                                 </a>
                             </div>
                         </article>
                     <?php endforeach; ?>
+                    <?php
+                    if ($original_post instanceof WP_Post) {
+                        $post = $original_post;
+                        setup_postdata($post);
+                    } else {
+                        wp_reset_postdata();
+                    }
+                    ?>
                 </div>
             </div>
         </section>
