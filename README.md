@@ -23,10 +23,12 @@ This repository is organized as a classic WordPress theme:
 
 - Parallax hero with adjustable motion depth
 - Customizer controls for:
+  - editable homepage elements and footer text
   - gradient colors and angle
   - hero and intro images
   - Google Font selection
   - primary, accent, surface, and text colors
+  - light, auto, and dark color mode
   - sticky header, smooth scroll, content width, and mobile behavior
 - Responsive layout for desktop, tablet, and mobile
 

@@ -27,6 +27,17 @@ function plx_parallax_sanitize_float($value) {
     return $value;
 }
 
+function plx_parallax_sanitize_recent_posts_count($value) {
+    $value = absint($value);
+    if ($value < 1) {
+        $value = 1;
+    }
+    if ($value > 6) {
+        $value = 6;
+    }
+    return $value;
+}
+
 function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_panel('plx_theme_options', array(
         'title'    => __('PLX Theme Options', 'plx-parallax'),
@@ -39,7 +50,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_eyebrow_text', array(
-        'default'           => __('Parallax WordPress Theme', 'plx-parallax'),
+        'default'           => plx_parallax_get_default('plx_eyebrow_text'),
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('plx_eyebrow_text', array(
@@ -49,7 +60,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_hero_title', array(
-        'default'           => __('Build depth into every scroll.', 'plx-parallax'),
+        'default'           => plx_parallax_get_default('plx_hero_title'),
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('plx_hero_title', array(
@@ -59,7 +70,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_hero_text', array(
-        'default'           => __('A sharp, responsive theme with flexible gradients, background imagery, typography controls, and motion tuned for both desktop and mobile.', 'plx-parallax'),
+        'default'           => plx_parallax_get_default('plx_hero_text'),
         'sanitize_callback' => 'sanitize_textarea_field',
     ));
     $wp_customize->add_control('plx_hero_text', array(
@@ -69,7 +80,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_primary_button_text', array(
-        'default'           => __('Explore the layout', 'plx-parallax'),
+        'default'           => plx_parallax_get_default('plx_primary_button_text'),
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('plx_primary_button_text', array(
@@ -79,7 +90,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_primary_button_url', array(
-        'default'           => '#content',
+        'default'           => plx_parallax_get_default('plx_primary_button_url'),
         'sanitize_callback' => 'esc_url_raw',
     ));
     $wp_customize->add_control('plx_primary_button_url', array(
@@ -89,7 +100,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_secondary_button_text', array(
-        'default'           => __('Read the latest posts', 'plx-parallax'),
+        'default'           => plx_parallax_get_default('plx_secondary_button_text'),
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('plx_secondary_button_text', array(
@@ -99,7 +110,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_secondary_button_url', array(
-        'default'           => '/blog',
+        'default'           => plx_parallax_get_default('plx_secondary_button_url'),
         'sanitize_callback' => 'esc_url_raw',
     ));
     $wp_customize->add_control('plx_secondary_button_url', array(
@@ -124,13 +135,167 @@ function plx_parallax_customize_register($wp_customize) {
         'section' => 'plx_hero_section',
     )));
 
+    $wp_customize->add_section('plx_content_section', array(
+        'title' => __('Editable Elements', 'plx-parallax'),
+        'panel' => 'plx_theme_options',
+    ));
+
+    $wp_customize->add_setting('plx_profile_title', array(
+        'default'           => plx_parallax_get_default('plx_profile_title'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('plx_profile_title', array(
+        'label'   => __('Profile Card Title', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
+    foreach (array(1, 2, 3, 4) as $index) {
+        $wp_customize->add_setting('plx_stat_' . $index . '_title', array(
+            'default'           => plx_parallax_get_default('plx_stat_' . $index . '_title'),
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control('plx_stat_' . $index . '_title', array(
+            'label'   => sprintf(__('Stat %d Title', 'plx-parallax'), $index),
+            'section' => 'plx_content_section',
+            'type'    => 'text',
+        ));
+
+        $wp_customize->add_setting('plx_stat_' . $index . '_text', array(
+            'default'           => plx_parallax_get_default('plx_stat_' . $index . '_text'),
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ));
+        $wp_customize->add_control('plx_stat_' . $index . '_text', array(
+            'label'   => sprintf(__('Stat %d Text', 'plx-parallax'), $index),
+            'section' => 'plx_content_section',
+            'type'    => 'textarea',
+        ));
+    }
+
+    $wp_customize->add_setting('plx_show_intro_section', array(
+        'default'           => plx_parallax_get_default('plx_show_intro_section'),
+        'sanitize_callback' => 'plx_parallax_sanitize_checkbox',
+    ));
+    $wp_customize->add_control('plx_show_intro_section', array(
+        'label'   => __('Show Intro Section', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'checkbox',
+    ));
+
+    $wp_customize->add_setting('plx_intro_title', array(
+        'default'           => plx_parallax_get_default('plx_intro_title'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('plx_intro_title', array(
+        'label'   => __('Intro Title', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_intro_text', array(
+        'default'           => plx_parallax_get_default('plx_intro_text'),
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('plx_intro_text', array(
+        'label'   => __('Intro Text', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'textarea',
+    ));
+
+    foreach (array(1, 2, 3) as $index) {
+        $wp_customize->add_setting('plx_feature_' . $index . '_title', array(
+            'default'           => plx_parallax_get_default('plx_feature_' . $index . '_title'),
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control('plx_feature_' . $index . '_title', array(
+            'label'   => sprintf(__('Feature %d Title', 'plx-parallax'), $index),
+            'section' => 'plx_content_section',
+            'type'    => 'text',
+        ));
+
+        $wp_customize->add_setting('plx_feature_' . $index . '_text', array(
+            'default'           => plx_parallax_get_default('plx_feature_' . $index . '_text'),
+            'sanitize_callback' => 'sanitize_textarea_field',
+        ));
+        $wp_customize->add_control('plx_feature_' . $index . '_text', array(
+            'label'   => sprintf(__('Feature %d Text', 'plx-parallax'), $index),
+            'section' => 'plx_content_section',
+            'type'    => 'textarea',
+        ));
+    }
+
+    $wp_customize->add_setting('plx_empty_content_title', array(
+        'default'           => plx_parallax_get_default('plx_empty_content_title'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('plx_empty_content_title', array(
+        'label'   => __('Empty Content Title', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_empty_content_text', array(
+        'default'           => plx_parallax_get_default('plx_empty_content_text'),
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('plx_empty_content_text', array(
+        'label'   => __('Empty Content Text', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'textarea',
+    ));
+
+    $wp_customize->add_setting('plx_show_recent_posts', array(
+        'default'           => plx_parallax_get_default('plx_show_recent_posts'),
+        'sanitize_callback' => 'plx_parallax_sanitize_checkbox',
+    ));
+    $wp_customize->add_control('plx_show_recent_posts', array(
+        'label'   => __('Show Recent Posts Section', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'checkbox',
+    ));
+
+    $wp_customize->add_setting('plx_recent_posts_title', array(
+        'default'           => plx_parallax_get_default('plx_recent_posts_title'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('plx_recent_posts_title', array(
+        'label'   => __('Recent Posts Title', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_recent_posts_count', array(
+        'default'           => plx_parallax_get_default('plx_recent_posts_count'),
+        'sanitize_callback' => 'plx_parallax_sanitize_recent_posts_count',
+    ));
+    $wp_customize->add_control('plx_recent_posts_count', array(
+        'label'       => __('Recent Posts Count', 'plx-parallax'),
+        'section'     => 'plx_content_section',
+        'type'        => 'number',
+        'input_attrs' => array(
+            'min'  => 1,
+            'max'  => 6,
+            'step' => 1,
+        ),
+    ));
+
+    $wp_customize->add_setting('plx_footer_tagline', array(
+        'default'           => plx_parallax_get_default('plx_footer_tagline'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('plx_footer_tagline', array(
+        'label'   => __('Footer Tagline', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
     $wp_customize->add_section('plx_style_section', array(
         'title' => __('Appearance', 'plx-parallax'),
         'panel' => 'plx_theme_options',
     ));
 
     $wp_customize->add_setting('plx_color_mode', array(
-        'default'           => 'auto',
+        'default'           => plx_parallax_get_default('plx_color_mode'),
         'sanitize_callback' => 'plx_parallax_sanitize_color_mode',
     ));
     $wp_customize->add_control('plx_color_mode', array(
@@ -145,22 +310,22 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     foreach (array(
-        'plx_primary_color'      => array(__('Primary Color', 'plx-parallax'), '#0f172a'),
-        'plx_secondary_color'    => array(__('Accent Color', 'plx-parallax'), '#f97316'),
-        'plx_surface_color'      => array(__('Surface Color', 'plx-parallax'), '#fff6eb'),
-        'plx_text_color'         => array(__('Text Color', 'plx-parallax'), '#0f172a'),
-        'plx_text_inverse_color' => array(__('Inverse Text Color', 'plx-parallax'), '#f8fafc'),
-        'plx_gradient_color_1'   => array(__('Gradient Color 1', 'plx-parallax'), '#0f172a'),
-        'plx_gradient_color_2'   => array(__('Gradient Color 2', 'plx-parallax'), '#1d4ed8'),
-        'plx_gradient_color_3'   => array(__('Gradient Color 3', 'plx-parallax'), '#f97316'),
+        'plx_primary_color'      => __('Primary Color', 'plx-parallax'),
+        'plx_secondary_color'    => __('Accent Color', 'plx-parallax'),
+        'plx_surface_color'      => __('Surface Color', 'plx-parallax'),
+        'plx_text_color'         => __('Text Color', 'plx-parallax'),
+        'plx_text_inverse_color' => __('Inverse Text Color', 'plx-parallax'),
+        'plx_gradient_color_1'   => __('Gradient Color 1', 'plx-parallax'),
+        'plx_gradient_color_2'   => __('Gradient Color 2', 'plx-parallax'),
+        'plx_gradient_color_3'   => __('Gradient Color 3', 'plx-parallax'),
     ) as $setting => $config) {
         $wp_customize->add_setting($setting, array(
-            'default'           => $config[1],
+            'default'           => plx_parallax_get_default($setting),
             'sanitize_callback' => 'sanitize_hex_color',
         ));
 
         $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting, array(
-            'label'   => $config[0],
+            'label'   => $config,
             'section' => 'plx_style_section',
         )));
     }
@@ -171,28 +336,28 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     foreach (array(
-        'plx_dark_primary_color'      => array(__('Dark Primary Color', 'plx-parallax'), '#020617'),
-        'plx_dark_secondary_color'    => array(__('Dark Accent Color', 'plx-parallax'), '#fb923c'),
-        'plx_dark_surface_color'      => array(__('Dark Surface Color', 'plx-parallax'), '#0f172a'),
-        'plx_dark_text_color'         => array(__('Dark Text Color', 'plx-parallax'), '#e5eefb'),
-        'plx_dark_text_inverse_color' => array(__('Dark Inverse Text Color', 'plx-parallax'), '#f8fafc'),
-        'plx_dark_gradient_color_1'   => array(__('Dark Gradient Color 1', 'plx-parallax'), '#020617'),
-        'plx_dark_gradient_color_2'   => array(__('Dark Gradient Color 2', 'plx-parallax'), '#0f3a8a'),
-        'plx_dark_gradient_color_3'   => array(__('Dark Gradient Color 3', 'plx-parallax'), '#ea580c'),
+        'plx_dark_primary_color'      => __('Dark Primary Color', 'plx-parallax'),
+        'plx_dark_secondary_color'    => __('Dark Accent Color', 'plx-parallax'),
+        'plx_dark_surface_color'      => __('Dark Surface Color', 'plx-parallax'),
+        'plx_dark_text_color'         => __('Dark Text Color', 'plx-parallax'),
+        'plx_dark_text_inverse_color' => __('Dark Inverse Text Color', 'plx-parallax'),
+        'plx_dark_gradient_color_1'   => __('Dark Gradient Color 1', 'plx-parallax'),
+        'plx_dark_gradient_color_2'   => __('Dark Gradient Color 2', 'plx-parallax'),
+        'plx_dark_gradient_color_3'   => __('Dark Gradient Color 3', 'plx-parallax'),
     ) as $setting => $config) {
         $wp_customize->add_setting($setting, array(
-            'default'           => $config[1],
+            'default'           => plx_parallax_get_default($setting),
             'sanitize_callback' => 'sanitize_hex_color',
         ));
 
         $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $setting, array(
-            'label'   => $config[0],
+            'label'   => $config,
             'section' => 'plx_dark_style_section',
         )));
     }
 
     $wp_customize->add_setting('plx_dark_overlay_opacity', array(
-        'default'           => 0.58,
+        'default'           => plx_parallax_get_default('plx_dark_overlay_opacity'),
         'sanitize_callback' => 'plx_parallax_sanitize_float',
     ));
     $wp_customize->add_control('plx_dark_overlay_opacity', array(
@@ -207,7 +372,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_font_family', array(
-        'default'           => 'Space Grotesk',
+        'default'           => plx_parallax_get_default('plx_font_family'),
         'sanitize_callback' => 'plx_parallax_sanitize_font_choice',
     ));
     $wp_customize->add_control('plx_font_family', array(
@@ -218,7 +383,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_gradient_angle', array(
-        'default'           => 132,
+        'default'           => plx_parallax_get_default('plx_gradient_angle'),
         'sanitize_callback' => 'absint',
     ));
     $wp_customize->add_control('plx_gradient_angle', array(
@@ -232,7 +397,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_overlay_opacity', array(
-        'default'           => 0.45,
+        'default'           => plx_parallax_get_default('plx_overlay_opacity'),
         'sanitize_callback' => 'plx_parallax_sanitize_float',
     ));
     $wp_customize->add_control('plx_overlay_opacity', array(
@@ -252,24 +417,24 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     foreach (array(
-        'plx_enable_parallax'         => array(__('Enable Parallax', 'plx-parallax'), true),
-        'plx_disable_mobile_parallax' => array(__('Disable Parallax on Mobile', 'plx-parallax'), true),
-        'plx_sticky_header'           => array(__('Sticky Header', 'plx-parallax'), true),
-        'plx_smooth_scroll'           => array(__('Smooth Scroll', 'plx-parallax'), true),
+        'plx_enable_parallax'         => __('Enable Parallax', 'plx-parallax'),
+        'plx_disable_mobile_parallax' => __('Disable Parallax on Mobile', 'plx-parallax'),
+        'plx_sticky_header'           => __('Sticky Header', 'plx-parallax'),
+        'plx_smooth_scroll'           => __('Smooth Scroll', 'plx-parallax'),
     ) as $setting => $config) {
         $wp_customize->add_setting($setting, array(
-            'default'           => $config[1],
+            'default'           => plx_parallax_get_default($setting),
             'sanitize_callback' => 'plx_parallax_sanitize_checkbox',
         ));
         $wp_customize->add_control($setting, array(
-            'label'   => $config[0],
+            'label'   => $config,
             'section' => 'plx_behavior_section',
             'type'    => 'checkbox',
         ));
     }
 
     $wp_customize->add_setting('plx_parallax_speed', array(
-        'default'           => 0.24,
+        'default'           => plx_parallax_get_default('plx_parallax_speed'),
         'sanitize_callback' => 'plx_parallax_sanitize_float',
     ));
     $wp_customize->add_control('plx_parallax_speed', array(
@@ -284,7 +449,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('plx_content_width', array(
-        'default'           => 1180,
+        'default'           => plx_parallax_get_default('plx_content_width'),
         'sanitize_callback' => 'absint',
     ));
     $wp_customize->add_control('plx_content_width', array(
