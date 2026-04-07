@@ -10,7 +10,7 @@ This repository is organized as a classic WordPress theme:
 - `theme.json`: editor and global style manifest for modern WordPress
 - `functions.php`: theme setup, assets, supports, and runtime settings
 - `header.php`, `footer.php`, `index.php`: core template files
-- `front-page.php`, `page.php`, `single.php`: content templates
+- `front-page.php`, `page.php`, `single.php`, `archive.php`, `search.php`, `404.php`: content templates
 - `inc/`: theme PHP includes
 - `assets/js/`: theme JavaScript
 
@@ -24,6 +24,9 @@ This repository is organized as a classic WordPress theme:
 - Parallax hero with adjustable motion depth
 - Customizer controls for:
   - editable homepage elements and footer text
+  - a parallax pages section with selected pages, drag-and-drop order, and per-page layout
+  - a closing CTA section with editable text and button
+  - live preview for key text and link changes in Customizer
   - gradient colors and angle
   - hero and intro images
   - Google Font selection
@@ -43,3 +46,4 @@ This repository is organized as a classic WordPress theme:
 
 - `style.css` and `index.php` are present, which are the minimum required files for a valid WordPress theme.
 - `theme.json` is included so the theme also behaves correctly with the block editor and site-wide editor settings.
+- The front page can now pull in selected WordPress pages from theme settings and render them in a custom order.

@@ -64,6 +64,28 @@ function plx_parallax_get_theme_defaults() {
         'plx_show_recent_posts'         => true,
         'plx_recent_posts_title'        => __('Latest stories', 'plx-parallax'),
         'plx_recent_posts_count'        => 3,
+        'plx_show_featured_pages'       => true,
+        'plx_featured_pages_title'      => __('Parallax pages', 'plx-parallax'),
+        'plx_featured_pages_text'       => __('Select pages in the theme settings and decide exactly how they should stack through the front page experience.', 'plx-parallax'),
+        'plx_featured_pages_cta_text'   => __('Open page', 'plx-parallax'),
+        'plx_featured_pages_sequence'   => '1,2,3,4,5,6',
+        'plx_featured_page_1_id'        => 0,
+        'plx_featured_page_1_layout'    => 'split-left',
+        'plx_featured_page_2_id'        => 0,
+        'plx_featured_page_2_layout'    => 'split-right',
+        'plx_featured_page_3_id'        => 0,
+        'plx_featured_page_3_layout'    => 'stacked',
+        'plx_featured_page_4_id'        => 0,
+        'plx_featured_page_4_layout'    => 'split-left',
+        'plx_featured_page_5_id'        => 0,
+        'plx_featured_page_5_layout'    => 'split-right',
+        'plx_featured_page_6_id'        => 0,
+        'plx_featured_page_6_layout'    => 'stacked',
+        'plx_show_cta_section'          => true,
+        'plx_cta_title'                 => __('Give the scroll a destination.', 'plx-parallax'),
+        'plx_cta_text'                  => __('Use this closing section for contact, bookings, launch messaging, or a single strong call to action.', 'plx-parallax'),
+        'plx_cta_button_text'           => __('Start a project', 'plx-parallax'),
+        'plx_cta_button_url'            => '/contact',
         'plx_footer_tagline'            => __('Parallax-ready, responsive, and customizable.', 'plx-parallax'),
     );
 }
@@ -104,6 +126,84 @@ function plx_parallax_get_font_choices() {
 function plx_parallax_get_color_mode() {
     $mode = get_theme_mod('plx_color_mode', plx_parallax_get_default('plx_color_mode'));
     return in_array($mode, array('light', 'auto', 'dark'), true) ? $mode : 'auto';
+}
+
+function plx_parallax_get_page_layout_choices() {
+    return array(
+        'split-left'  => __('Image left', 'plx-parallax'),
+        'split-right' => __('Image right', 'plx-parallax'),
+        'stacked'     => __('Stacked', 'plx-parallax'),
+        'compact'     => __('Compact', 'plx-parallax'),
+    );
+}
+
+function plx_parallax_get_featured_pages() {
+    $sequence_raw = get_theme_mod('plx_featured_pages_sequence', plx_parallax_get_default('plx_featured_pages_sequence'));
+    $sequence     = array_filter(array_map('absint', explode(',', (string) $sequence_raw)));
+    $sequence     = array_values(array_unique(array_filter($sequence, function ($slot) {
+        return $slot >= 1 && $slot <= 6;
+    })));
+
+    if (count($sequence) < 6) {
+        for ($index = 1; $index <= 6; $index++) {
+            if (! in_array($index, $sequence, true)) {
+                $sequence[] = $index;
+            }
+        }
+    }
+
+    $selected   = array();
+    $page_ids   = array();
+    $layouts    = plx_parallax_get_page_layout_choices();
+
+    foreach ($sequence as $index) {
+        $page_id = absint(get_theme_mod('plx_featured_page_' . $index . '_id', plx_parallax_get_default('plx_featured_page_' . $index . '_id')));
+        $layout  = get_theme_mod('plx_featured_page_' . $index . '_layout', plx_parallax_get_default('plx_featured_page_' . $index . '_layout'));
+        $layout  = isset($layouts[$layout]) ? $layout : 'split-left';
+
+        if (! $page_id || isset($selected[$page_id])) {
+            continue;
+        }
+
+        $selected[$page_id] = array(
+            'slot'   => $index,
+            'layout' => $layout,
+        );
+        $page_ids[] = $page_id;
+    }
+
+    if (empty($selected)) {
+        return array();
+    }
+
+    $pages = get_posts(array(
+        'post_type'      => 'page',
+        'post_status'    => 'publish',
+        'posts_per_page' => count($page_ids),
+        'post__in'       => $page_ids,
+    ));
+
+    if (empty($pages)) {
+        return array();
+    }
+
+    $page_map = array();
+    foreach ($pages as $page) {
+        $page_map[$page->ID] = $page;
+    }
+
+    $ordered_pages = array();
+    foreach ($page_ids as $page_id) {
+        if (isset($page_map[$page_id])) {
+            $ordered_pages[] = array(
+                'page'   => $page_map[$page_id],
+                'slot'   => $selected[$page_id]['slot'],
+                'layout' => $selected[$page_id]['layout'],
+            );
+        }
+    }
+
+    return $ordered_pages;
 }
 
 function plx_parallax_build_css_vars($selector, $vars) {
@@ -241,6 +341,32 @@ function plx_parallax_enqueue_assets() {
     wp_add_inline_style('plx-parallax-style', $inline_css);
 }
 add_action('wp_enqueue_scripts', 'plx_parallax_enqueue_assets');
+
+function plx_parallax_enqueue_customizer_controls_assets() {
+    $version = wp_get_theme()->get('Version');
+
+    wp_enqueue_script(
+        'plx-parallax-customizer-controls',
+        get_template_directory_uri() . '/assets/js/customizer-controls.js',
+        array('jquery', 'customize-controls', 'jquery-ui-sortable'),
+        $version,
+        true
+    );
+}
+add_action('customize_controls_enqueue_scripts', 'plx_parallax_enqueue_customizer_controls_assets');
+
+function plx_parallax_enqueue_customizer_preview_assets() {
+    $version = wp_get_theme()->get('Version');
+
+    wp_enqueue_script(
+        'plx-parallax-customizer-preview',
+        get_template_directory_uri() . '/assets/js/customizer-preview.js',
+        array('jquery', 'customize-preview'),
+        $version,
+        true
+    );
+}
+add_action('customize_preview_init', 'plx_parallax_enqueue_customizer_preview_assets');
 
 function plx_parallax_body_classes($classes) {
     $classes[] = get_theme_mod('plx_sticky_header', plx_parallax_get_default('plx_sticky_header')) ? 'has-sticky-header' : 'has-static-header';

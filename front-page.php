@@ -7,8 +7,11 @@ get_header();
 
 $profile_title      = get_theme_mod('plx_profile_title', plx_parallax_get_default('plx_profile_title'));
 $show_intro_section = get_theme_mod('plx_show_intro_section', plx_parallax_get_default('plx_show_intro_section'));
+$show_featured_pages = get_theme_mod('plx_show_featured_pages', plx_parallax_get_default('plx_show_featured_pages'));
 $show_recent_posts  = get_theme_mod('plx_show_recent_posts', plx_parallax_get_default('plx_show_recent_posts'));
+$show_cta_section   = get_theme_mod('plx_show_cta_section', plx_parallax_get_default('plx_show_cta_section'));
 $recent_posts_count = absint(get_theme_mod('plx_recent_posts_count', plx_parallax_get_default('plx_recent_posts_count')));
+$featured_pages     = plx_parallax_get_featured_pages();
 ?>
 <main>
     <section class="hero">
@@ -20,36 +23,36 @@ $recent_posts_count = absint(get_theme_mod('plx_recent_posts_count', plx_paralla
         </div>
         <div class="hero__inner">
             <div class="hero__copy">
-                <span class="hero__eyebrow"><?php echo esc_html(get_theme_mod('plx_eyebrow_text', plx_parallax_get_default('plx_eyebrow_text'))); ?></span>
-                <h1 class="hero__title"><?php echo esc_html(get_theme_mod('plx_hero_title', plx_parallax_get_default('plx_hero_title'))); ?></h1>
-                <p class="hero__text"><?php echo esc_html(get_theme_mod('plx_hero_text', plx_parallax_get_default('plx_hero_text'))); ?></p>
+                <span class="hero__eyebrow js-plx-eyebrow"><?php echo esc_html(get_theme_mod('plx_eyebrow_text', plx_parallax_get_default('plx_eyebrow_text'))); ?></span>
+                <h1 class="hero__title js-plx-hero-title"><?php echo esc_html(get_theme_mod('plx_hero_title', plx_parallax_get_default('plx_hero_title'))); ?></h1>
+                <p class="hero__text js-plx-hero-text"><?php echo esc_html(get_theme_mod('plx_hero_text', plx_parallax_get_default('plx_hero_text'))); ?></p>
                 <div class="hero__actions">
-                    <a class="plx-button plx-button--primary" href="<?php echo esc_url(get_theme_mod('plx_primary_button_url', plx_parallax_get_default('plx_primary_button_url'))); ?>">
+                    <a class="plx-button plx-button--primary js-plx-primary-button" href="<?php echo esc_url(get_theme_mod('plx_primary_button_url', plx_parallax_get_default('plx_primary_button_url'))); ?>">
                         <?php echo esc_html(get_theme_mod('plx_primary_button_text', plx_parallax_get_default('plx_primary_button_text'))); ?>
                     </a>
-                    <a class="plx-button plx-button--ghost" href="<?php echo esc_url(get_theme_mod('plx_secondary_button_url', plx_parallax_get_default('plx_secondary_button_url'))); ?>">
+                    <a class="plx-button plx-button--ghost js-plx-secondary-button" href="<?php echo esc_url(get_theme_mod('plx_secondary_button_url', plx_parallax_get_default('plx_secondary_button_url'))); ?>">
                         <?php echo esc_html(get_theme_mod('plx_secondary_button_text', plx_parallax_get_default('plx_secondary_button_text'))); ?>
                     </a>
                 </div>
             </div>
             <aside class="hero__card">
-                <p class="hero__card-title"><?php echo esc_html($profile_title); ?></p>
+                <p class="hero__card-title js-plx-profile-title"><?php echo esc_html($profile_title); ?></p>
                 <div class="hero__stat-grid">
-                    <div class="hero__stat">
-                        <strong><?php echo esc_html(get_theme_mod('plx_stat_1_title', plx_parallax_get_default('plx_stat_1_title'))); ?></strong>
-                        <span><?php echo esc_html(get_theme_mod('plx_stat_1_text', plx_parallax_get_default('plx_stat_1_text'))); ?></span>
+                    <div class="hero__stat" data-stat="1">
+                        <strong class="js-plx-stat-title"><?php echo esc_html(get_theme_mod('plx_stat_1_title', plx_parallax_get_default('plx_stat_1_title'))); ?></strong>
+                        <span class="js-plx-stat-text"><?php echo esc_html(get_theme_mod('plx_stat_1_text', plx_parallax_get_default('plx_stat_1_text'))); ?></span>
                     </div>
-                    <div class="hero__stat">
-                        <strong><?php echo esc_html(get_theme_mod('plx_stat_2_title', plx_parallax_get_default('plx_stat_2_title'))); ?></strong>
-                        <span><?php echo esc_html(get_theme_mod('plx_stat_2_text', plx_parallax_get_default('plx_stat_2_text'))); ?></span>
+                    <div class="hero__stat" data-stat="2">
+                        <strong class="js-plx-stat-title"><?php echo esc_html(get_theme_mod('plx_stat_2_title', plx_parallax_get_default('plx_stat_2_title'))); ?></strong>
+                        <span class="js-plx-stat-text"><?php echo esc_html(get_theme_mod('plx_stat_2_text', plx_parallax_get_default('plx_stat_2_text'))); ?></span>
                     </div>
-                    <div class="hero__stat">
-                        <strong><?php echo esc_html(get_theme_mod('plx_stat_3_title', plx_parallax_get_default('plx_stat_3_title'))); ?></strong>
-                        <span><?php echo esc_html(get_theme_mod('plx_stat_3_text', plx_parallax_get_default('plx_stat_3_text'))); ?></span>
+                    <div class="hero__stat" data-stat="3">
+                        <strong class="js-plx-stat-title"><?php echo esc_html(get_theme_mod('plx_stat_3_title', plx_parallax_get_default('plx_stat_3_title'))); ?></strong>
+                        <span class="js-plx-stat-text"><?php echo esc_html(get_theme_mod('plx_stat_3_text', plx_parallax_get_default('plx_stat_3_text'))); ?></span>
                     </div>
-                    <div class="hero__stat">
-                        <strong><?php echo esc_html(get_theme_mod('plx_stat_4_title', plx_parallax_get_default('plx_stat_4_title'))); ?></strong>
-                        <span><?php echo esc_html(get_theme_mod('plx_stat_4_text', plx_parallax_get_default('plx_stat_4_text'))); ?></span>
+                    <div class="hero__stat" data-stat="4">
+                        <strong class="js-plx-stat-title"><?php echo esc_html(get_theme_mod('plx_stat_4_title', plx_parallax_get_default('plx_stat_4_title'))); ?></strong>
+                        <span class="js-plx-stat-text"><?php echo esc_html(get_theme_mod('plx_stat_4_text', plx_parallax_get_default('plx_stat_4_text'))); ?></span>
                     </div>
                 </div>
             </aside>
@@ -57,28 +60,65 @@ $recent_posts_count = absint(get_theme_mod('plx_recent_posts_count', plx_paralla
     </section>
 
     <?php if ($show_intro_section) : ?>
-        <section class="section section--intro">
+        <section class="section section--intro js-plx-intro-section">
             <div class="section__inner">
                 <div class="intro-panel">
                     <div class="intro-panel__content">
-                        <h2><?php echo esc_html(get_theme_mod('plx_intro_title', plx_parallax_get_default('plx_intro_title'))); ?></h2>
-                        <p><?php echo esc_html(get_theme_mod('plx_intro_text', plx_parallax_get_default('plx_intro_text'))); ?></p>
+                        <h2 class="js-plx-intro-title"><?php echo esc_html(get_theme_mod('plx_intro_title', plx_parallax_get_default('plx_intro_title'))); ?></h2>
+                        <p class="js-plx-intro-text"><?php echo esc_html(get_theme_mod('plx_intro_text', plx_parallax_get_default('plx_intro_text'))); ?></p>
                         <div class="feature-grid">
-                            <article class="feature-card">
-                                <h3><?php echo esc_html(get_theme_mod('plx_feature_1_title', plx_parallax_get_default('plx_feature_1_title'))); ?></h3>
-                                <p><?php echo esc_html(get_theme_mod('plx_feature_1_text', plx_parallax_get_default('plx_feature_1_text'))); ?></p>
+                            <article class="feature-card" data-feature="1">
+                                <h3 class="js-plx-feature-title"><?php echo esc_html(get_theme_mod('plx_feature_1_title', plx_parallax_get_default('plx_feature_1_title'))); ?></h3>
+                                <p class="js-plx-feature-text"><?php echo esc_html(get_theme_mod('plx_feature_1_text', plx_parallax_get_default('plx_feature_1_text'))); ?></p>
                             </article>
-                            <article class="feature-card">
-                                <h3><?php echo esc_html(get_theme_mod('plx_feature_2_title', plx_parallax_get_default('plx_feature_2_title'))); ?></h3>
-                                <p><?php echo esc_html(get_theme_mod('plx_feature_2_text', plx_parallax_get_default('plx_feature_2_text'))); ?></p>
+                            <article class="feature-card" data-feature="2">
+                                <h3 class="js-plx-feature-title"><?php echo esc_html(get_theme_mod('plx_feature_2_title', plx_parallax_get_default('plx_feature_2_title'))); ?></h3>
+                                <p class="js-plx-feature-text"><?php echo esc_html(get_theme_mod('plx_feature_2_text', plx_parallax_get_default('plx_feature_2_text'))); ?></p>
                             </article>
-                            <article class="feature-card">
-                                <h3><?php echo esc_html(get_theme_mod('plx_feature_3_title', plx_parallax_get_default('plx_feature_3_title'))); ?></h3>
-                                <p><?php echo esc_html(get_theme_mod('plx_feature_3_text', plx_parallax_get_default('plx_feature_3_text'))); ?></p>
+                            <article class="feature-card" data-feature="3">
+                                <h3 class="js-plx-feature-title"><?php echo esc_html(get_theme_mod('plx_feature_3_title', plx_parallax_get_default('plx_feature_3_title'))); ?></h3>
+                                <p class="js-plx-feature-text"><?php echo esc_html(get_theme_mod('plx_feature_3_text', plx_parallax_get_default('plx_feature_3_text'))); ?></p>
                             </article>
                         </div>
                     </div>
                     <div class="intro-panel__media parallax-layer" data-depth="0.08"></div>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($show_featured_pages && ! empty($featured_pages)) : ?>
+        <section class="section section--pages js-plx-pages-section">
+            <div class="section__inner section__inner--pages">
+                <div class="pages-intro">
+                    <span class="hero__eyebrow"><?php esc_html_e('Selected pages', 'plx-parallax'); ?></span>
+                    <h2 class="archive-grid__title js-plx-pages-title"><?php echo esc_html(get_theme_mod('plx_featured_pages_title', plx_parallax_get_default('plx_featured_pages_title'))); ?></h2>
+                    <p class="js-plx-pages-text"><?php echo esc_html(get_theme_mod('plx_featured_pages_text', plx_parallax_get_default('plx_featured_pages_text'))); ?></p>
+                </div>
+                <div class="page-stack">
+                    <?php foreach ($featured_pages as $page_item) : ?>
+                        <article class="page-panel page-panel--<?php echo esc_attr($page_item['layout']); ?>">
+                            <a class="page-panel__media parallax-layer" data-depth="0.05" href="<?php echo esc_url(get_permalink($page_item)); ?>">
+                                <?php
+                                if (has_post_thumbnail($page_item['page'])) {
+                                    echo get_the_post_thumbnail($page_item['page'], 'large');
+                                } else {
+                                    echo '<span class="page-panel__fallback" aria-hidden="true"></span>';
+                                }
+                                ?>
+                            </a>
+                            <div class="page-panel__body">
+                                <span class="post-card__meta"><?php echo esc_html(get_post_field('post_name', $page_item['page']->ID)); ?></span>
+                                <h3 class="page-panel__title">
+                                    <a href="<?php echo esc_url(get_permalink($page_item['page'])); ?>"><?php echo esc_html(get_the_title($page_item['page'])); ?></a>
+                                </h3>
+                                <p><?php echo esc_html(wp_trim_words(wp_strip_all_tags(get_the_excerpt($page_item['page'])), 22)); ?></p>
+                                <a class="plx-button plx-button--ghost page-panel__button js-plx-pages-button" href="<?php echo esc_url(get_permalink($page_item['page'])); ?>">
+                                    <?php echo esc_html(get_theme_mod('plx_featured_pages_cta_text', plx_parallax_get_default('plx_featured_pages_cta_text'))); ?>
+                                </a>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </section>
@@ -114,7 +154,7 @@ $recent_posts_count = absint(get_theme_mod('plx_recent_posts_count', plx_paralla
         ?>
         <section class="section">
             <div class="section__inner">
-                <div class="archive-grid__title"><?php echo esc_html(get_theme_mod('plx_recent_posts_title', plx_parallax_get_default('plx_recent_posts_title'))); ?></div>
+                <div class="archive-grid__title js-plx-recent-posts-title"><?php echo esc_html(get_theme_mod('plx_recent_posts_title', plx_parallax_get_default('plx_recent_posts_title'))); ?></div>
                 <div class="post-grid">
                     <?php
                     while ($recent_posts->have_posts()) :
@@ -142,5 +182,24 @@ $recent_posts_count = absint(get_theme_mod('plx_recent_posts_count', plx_paralla
         wp_reset_postdata();
     endif;
     ?>
+
+    <?php if ($show_cta_section) : ?>
+        <section class="section section--cta js-plx-cta-section">
+            <div class="section__inner">
+                <div class="cta-panel">
+                    <div class="cta-panel__copy">
+                        <span class="hero__eyebrow"><?php esc_html_e('Call to action', 'plx-parallax'); ?></span>
+                        <h2 class="js-plx-cta-title"><?php echo esc_html(get_theme_mod('plx_cta_title', plx_parallax_get_default('plx_cta_title'))); ?></h2>
+                        <p class="js-plx-cta-text"><?php echo esc_html(get_theme_mod('plx_cta_text', plx_parallax_get_default('plx_cta_text'))); ?></p>
+                    </div>
+                    <div class="cta-panel__action">
+                        <a class="plx-button plx-button--primary js-plx-cta-button" href="<?php echo esc_url(get_theme_mod('plx_cta_button_url', plx_parallax_get_default('plx_cta_button_url'))); ?>">
+                            <?php echo esc_html(get_theme_mod('plx_cta_button_text', plx_parallax_get_default('plx_cta_button_text'))); ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
 </main>
 <?php get_footer(); ?>

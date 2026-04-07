@@ -3,6 +3,40 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+if (class_exists('WP_Customize_Control') && ! class_exists('PLX_Parallax_Sortable_Control')) {
+    class PLX_Parallax_Sortable_Control extends WP_Customize_Control {
+        public $type = 'plx-sortable-slots';
+
+        public function render_content() {
+            $value = $this->value();
+            $slots = array_filter(array_map('absint', explode(',', (string) $value)));
+
+            if (empty($slots)) {
+                $slots = range(1, 6);
+            }
+            ?>
+            <div class="plx-sortable-control">
+                <?php if (! empty($this->label)) : ?>
+                    <span class="customize-control-title"><?php echo esc_html($this->label); ?></span>
+                <?php endif; ?>
+                <?php if (! empty($this->description)) : ?>
+                    <span class="description customize-control-description"><?php echo esc_html($this->description); ?></span>
+                <?php endif; ?>
+                <ul class="plx-sortable-list" data-control="<?php echo esc_attr($this->id); ?>">
+                    <?php foreach ($slots as $slot) : ?>
+                        <li class="plx-sortable-item" data-slot="<?php echo esc_attr($slot); ?>">
+                            <span class="plx-sortable-handle" aria-hidden="true">::</span>
+                            <span class="plx-sortable-label"><?php echo esc_html(sprintf(__('Slot %d', 'plx-parallax'), $slot)); ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <input type="hidden" class="plx-sortable-value" <?php $this->link(); ?> value="<?php echo esc_attr($value); ?>">
+            </div>
+            <?php
+        }
+    }
+}
+
 function plx_parallax_sanitize_font_choice($value) {
     $choices = array_keys(plx_parallax_get_font_choices());
     return in_array($value, $choices, true) ? $value : 'Space Grotesk';
@@ -38,6 +72,34 @@ function plx_parallax_sanitize_recent_posts_count($value) {
     return $value;
 }
 
+function plx_parallax_sanitize_page_id($value) {
+    return absint($value);
+}
+
+function plx_parallax_sanitize_order_value($value) {
+    return absint($value);
+}
+
+function plx_parallax_sanitize_slot_sequence($value) {
+    $slots = array_filter(array_map('absint', explode(',', (string) $value)));
+    $slots = array_values(array_unique(array_filter($slots, function ($slot) {
+        return $slot >= 1 && $slot <= 6;
+    })));
+
+    for ($index = 1; $index <= 6; $index++) {
+        if (! in_array($index, $slots, true)) {
+            $slots[] = $index;
+        }
+    }
+
+    return implode(',', $slots);
+}
+
+function plx_parallax_sanitize_layout_choice($value) {
+    $choices = plx_parallax_get_page_layout_choices();
+    return isset($choices[$value]) ? $value : 'split-left';
+}
+
 function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_panel('plx_theme_options', array(
         'title'    => __('PLX Theme Options', 'plx-parallax'),
@@ -52,6 +114,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_eyebrow_text', array(
         'default'           => plx_parallax_get_default('plx_eyebrow_text'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_eyebrow_text', array(
         'label'   => __('Eyebrow Text', 'plx-parallax'),
@@ -62,6 +125,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_hero_title', array(
         'default'           => plx_parallax_get_default('plx_hero_title'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_hero_title', array(
         'label'   => __('Hero Title', 'plx-parallax'),
@@ -72,6 +136,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_hero_text', array(
         'default'           => plx_parallax_get_default('plx_hero_text'),
         'sanitize_callback' => 'sanitize_textarea_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_hero_text', array(
         'label'   => __('Hero Text', 'plx-parallax'),
@@ -82,6 +147,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_primary_button_text', array(
         'default'           => plx_parallax_get_default('plx_primary_button_text'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_primary_button_text', array(
         'label'   => __('Primary Button Text', 'plx-parallax'),
@@ -92,6 +158,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_primary_button_url', array(
         'default'           => plx_parallax_get_default('plx_primary_button_url'),
         'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_primary_button_url', array(
         'label'   => __('Primary Button URL', 'plx-parallax'),
@@ -102,6 +169,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_secondary_button_text', array(
         'default'           => plx_parallax_get_default('plx_secondary_button_text'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_secondary_button_text', array(
         'label'   => __('Secondary Button Text', 'plx-parallax'),
@@ -112,6 +180,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_secondary_button_url', array(
         'default'           => plx_parallax_get_default('plx_secondary_button_url'),
         'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_secondary_button_url', array(
         'label'   => __('Secondary Button URL', 'plx-parallax'),
@@ -143,6 +212,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_profile_title', array(
         'default'           => plx_parallax_get_default('plx_profile_title'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_profile_title', array(
         'label'   => __('Profile Card Title', 'plx-parallax'),
@@ -154,6 +224,7 @@ function plx_parallax_customize_register($wp_customize) {
         $wp_customize->add_setting('plx_stat_' . $index . '_title', array(
             'default'           => plx_parallax_get_default('plx_stat_' . $index . '_title'),
             'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'postMessage',
         ));
         $wp_customize->add_control('plx_stat_' . $index . '_title', array(
             'label'   => sprintf(__('Stat %d Title', 'plx-parallax'), $index),
@@ -164,6 +235,7 @@ function plx_parallax_customize_register($wp_customize) {
         $wp_customize->add_setting('plx_stat_' . $index . '_text', array(
             'default'           => plx_parallax_get_default('plx_stat_' . $index . '_text'),
             'sanitize_callback' => 'sanitize_textarea_field',
+            'transport'         => 'postMessage',
         ));
         $wp_customize->add_control('plx_stat_' . $index . '_text', array(
             'label'   => sprintf(__('Stat %d Text', 'plx-parallax'), $index),
@@ -175,6 +247,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_show_intro_section', array(
         'default'           => plx_parallax_get_default('plx_show_intro_section'),
         'sanitize_callback' => 'plx_parallax_sanitize_checkbox',
+        'transport'         => 'refresh',
     ));
     $wp_customize->add_control('plx_show_intro_section', array(
         'label'   => __('Show Intro Section', 'plx-parallax'),
@@ -185,6 +258,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_intro_title', array(
         'default'           => plx_parallax_get_default('plx_intro_title'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_intro_title', array(
         'label'   => __('Intro Title', 'plx-parallax'),
@@ -195,6 +269,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_intro_text', array(
         'default'           => plx_parallax_get_default('plx_intro_text'),
         'sanitize_callback' => 'sanitize_textarea_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_intro_text', array(
         'label'   => __('Intro Text', 'plx-parallax'),
@@ -206,6 +281,7 @@ function plx_parallax_customize_register($wp_customize) {
         $wp_customize->add_setting('plx_feature_' . $index . '_title', array(
             'default'           => plx_parallax_get_default('plx_feature_' . $index . '_title'),
             'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'postMessage',
         ));
         $wp_customize->add_control('plx_feature_' . $index . '_title', array(
             'label'   => sprintf(__('Feature %d Title', 'plx-parallax'), $index),
@@ -216,6 +292,7 @@ function plx_parallax_customize_register($wp_customize) {
         $wp_customize->add_setting('plx_feature_' . $index . '_text', array(
             'default'           => plx_parallax_get_default('plx_feature_' . $index . '_text'),
             'sanitize_callback' => 'sanitize_textarea_field',
+            'transport'         => 'postMessage',
         ));
         $wp_customize->add_control('plx_feature_' . $index . '_text', array(
             'label'   => sprintf(__('Feature %d Text', 'plx-parallax'), $index),
@@ -227,6 +304,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_empty_content_title', array(
         'default'           => plx_parallax_get_default('plx_empty_content_title'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_empty_content_title', array(
         'label'   => __('Empty Content Title', 'plx-parallax'),
@@ -237,6 +315,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_empty_content_text', array(
         'default'           => plx_parallax_get_default('plx_empty_content_text'),
         'sanitize_callback' => 'sanitize_textarea_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_empty_content_text', array(
         'label'   => __('Empty Content Text', 'plx-parallax'),
@@ -247,6 +326,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_show_recent_posts', array(
         'default'           => plx_parallax_get_default('plx_show_recent_posts'),
         'sanitize_callback' => 'plx_parallax_sanitize_checkbox',
+        'transport'         => 'refresh',
     ));
     $wp_customize->add_control('plx_show_recent_posts', array(
         'label'   => __('Show Recent Posts Section', 'plx-parallax'),
@@ -257,6 +337,7 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_recent_posts_title', array(
         'default'           => plx_parallax_get_default('plx_recent_posts_title'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_recent_posts_title', array(
         'label'   => __('Recent Posts Title', 'plx-parallax'),
@@ -282,11 +363,147 @@ function plx_parallax_customize_register($wp_customize) {
     $wp_customize->add_setting('plx_footer_tagline', array(
         'default'           => plx_parallax_get_default('plx_footer_tagline'),
         'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
     ));
     $wp_customize->add_control('plx_footer_tagline', array(
         'label'   => __('Footer Tagline', 'plx-parallax'),
         'section' => 'plx_content_section',
         'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_show_featured_pages', array(
+        'default'           => plx_parallax_get_default('plx_show_featured_pages'),
+        'sanitize_callback' => 'plx_parallax_sanitize_checkbox',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control('plx_show_featured_pages', array(
+        'label'   => __('Show Parallax Pages Section', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'checkbox',
+    ));
+
+    $wp_customize->add_setting('plx_featured_pages_title', array(
+        'default'           => plx_parallax_get_default('plx_featured_pages_title'),
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
+    ));
+    $wp_customize->add_control('plx_featured_pages_title', array(
+        'label'   => __('Parallax Pages Title', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_featured_pages_text', array(
+        'default'           => plx_parallax_get_default('plx_featured_pages_text'),
+        'sanitize_callback' => 'sanitize_textarea_field',
+        'transport'         => 'postMessage',
+    ));
+    $wp_customize->add_control('plx_featured_pages_text', array(
+        'label'   => __('Parallax Pages Text', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'textarea',
+    ));
+
+    $wp_customize->add_setting('plx_featured_pages_cta_text', array(
+        'default'           => plx_parallax_get_default('plx_featured_pages_cta_text'),
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
+    ));
+    $wp_customize->add_control('plx_featured_pages_cta_text', array(
+        'label'   => __('Parallax Pages Button Text', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_featured_pages_sequence', array(
+        'default'           => plx_parallax_get_default('plx_featured_pages_sequence'),
+        'sanitize_callback' => 'plx_parallax_sanitize_slot_sequence',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control(new PLX_Parallax_Sortable_Control($wp_customize, 'plx_featured_pages_sequence', array(
+        'label'       => __('Parallax Page Order', 'plx-parallax'),
+        'description' => __('Drag slots to change the page order on the front page.', 'plx-parallax'),
+        'section'     => 'plx_content_section',
+    )));
+
+    for ($index = 1; $index <= 6; $index++) {
+        $wp_customize->add_setting('plx_featured_page_' . $index . '_id', array(
+            'default'           => plx_parallax_get_default('plx_featured_page_' . $index . '_id'),
+            'sanitize_callback' => 'plx_parallax_sanitize_page_id',
+            'transport'         => 'refresh',
+        ));
+        $wp_customize->add_control('plx_featured_page_' . $index . '_id', array(
+            'label'   => sprintf(__('Page Slot %d', 'plx-parallax'), $index),
+            'section' => 'plx_content_section',
+            'type'    => 'dropdown-pages',
+        ));
+
+        $wp_customize->add_setting('plx_featured_page_' . $index . '_layout', array(
+            'default'           => plx_parallax_get_default('plx_featured_page_' . $index . '_layout'),
+            'sanitize_callback' => 'plx_parallax_sanitize_layout_choice',
+            'transport'         => 'refresh',
+        ));
+        $wp_customize->add_control('plx_featured_page_' . $index . '_layout', array(
+            'label'       => sprintf(__('Page Slot %d Layout', 'plx-parallax'), $index),
+            'section'     => 'plx_content_section',
+            'type'        => 'select',
+            'choices'     => plx_parallax_get_page_layout_choices(),
+        ));
+    }
+
+    $wp_customize->add_setting('plx_show_cta_section', array(
+        'default'           => plx_parallax_get_default('plx_show_cta_section'),
+        'sanitize_callback' => 'plx_parallax_sanitize_checkbox',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control('plx_show_cta_section', array(
+        'label'   => __('Show CTA Section', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'checkbox',
+    ));
+
+    $wp_customize->add_setting('plx_cta_title', array(
+        'default'           => plx_parallax_get_default('plx_cta_title'),
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
+    ));
+    $wp_customize->add_control('plx_cta_title', array(
+        'label'   => __('CTA Title', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_cta_text', array(
+        'default'           => plx_parallax_get_default('plx_cta_text'),
+        'sanitize_callback' => 'sanitize_textarea_field',
+        'transport'         => 'postMessage',
+    ));
+    $wp_customize->add_control('plx_cta_text', array(
+        'label'   => __('CTA Text', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'textarea',
+    ));
+
+    $wp_customize->add_setting('plx_cta_button_text', array(
+        'default'           => plx_parallax_get_default('plx_cta_button_text'),
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'postMessage',
+    ));
+    $wp_customize->add_control('plx_cta_button_text', array(
+        'label'   => __('CTA Button Text', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'text',
+    ));
+
+    $wp_customize->add_setting('plx_cta_button_url', array(
+        'default'           => plx_parallax_get_default('plx_cta_button_url'),
+        'sanitize_callback' => 'esc_url_raw',
+        'transport'         => 'postMessage',
+    ));
+    $wp_customize->add_control('plx_cta_button_url', array(
+        'label'   => __('CTA Button URL', 'plx-parallax'),
+        'section' => 'plx_content_section',
+        'type'    => 'url',
     ));
 
     $wp_customize->add_section('plx_style_section', array(
