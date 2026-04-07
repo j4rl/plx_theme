@@ -1,0 +1,131 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "860px",
+      "wideSize": "1180px"
+    },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        {
+          "slug": "primary",
+          "name": "Primary",
+          "color": "#0f172a"
+        },
+        {
+          "slug": "accent",
+          "name": "Accent",
+          "color": "#f97316"
+        },
+        {
+          "slug": "surface",
+          "name": "Surface",
+          "color": "#fff6eb"
+        },
+        {
+          "slug": "text",
+          "name": "Text",
+          "color": "#0f172a"
+        },
+        {
+          "slug": "text-inverse",
+          "name": "Text Inverse",
+          "color": "#f8fafc"
+        }
+      ],
+      "gradients": [
+        {
+          "slug": "plx-hero",
+          "name": "PLX Hero",
+          "gradient": "linear-gradient(132deg, #0f172a, #1d4ed8 52%, #f97316)"
+        }
+      ]
+    },
+    "typography": {
+      "defaultFontSizes": false,
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "fontFamily": "\"Space Grotesk\", sans-serif",
+          "name": "Space Grotesk",
+          "slug": "space-grotesk"
+        },
+        {
+          "fontFamily": "\"Manrope\", sans-serif",
+          "name": "Manrope",
+          "slug": "manrope"
+        },
+        {
+          "fontFamily": "\"DM Sans\", sans-serif",
+          "name": "DM Sans",
+          "slug": "dm-sans"
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "small",
+          "name": "Small",
+          "size": "0.875rem"
+        },
+        {
+          "slug": "medium",
+          "name": "Medium",
+          "size": "1rem"
+        },
+        {
+          "slug": "large",
+          "name": "Large",
+          "size": "1.5rem"
+        },
+        {
+          "slug": "x-large",
+          "name": "Extra Large",
+          "size": "3rem"
+        }
+      ]
+    },
+    "spacing": {
+      "units": [
+        "px",
+        "rem",
+        "%",
+        "vw",
+        "vh"
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#f7f3ed",
+      "text": "#0f172a"
+    },
+    "typography": {
+      "fontFamily": "\"Space Grotesk\", sans-serif",
+      "lineHeight": "1.6"
+    },
+    "elements": {
+      "button": {
+        "border": {
+          "radius": "999px"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0.85rem",
+            "right": "1.25rem",
+            "bottom": "0.85rem",
+            "left": "1.25rem"
+          }
+        }
+      },
+      "link": {
+        "color": {
+          "text": "inherit"
+        }
+      }
+    }
+  }
+}
