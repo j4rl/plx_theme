@@ -143,6 +143,7 @@ function plx_parallax_get_featured_pages_display_choices() {
     return array(
         'cards' => __('Cards', 'plx-parallax'),
         'full'  => __('Full content', 'plx-parallax'),
+        'flow'  => __('Parallax flow', 'plx-parallax'),
     );
 }
 

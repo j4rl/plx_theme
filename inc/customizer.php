@@ -432,7 +432,7 @@ function plx_parallax_customize_register($wp_customize) {
     ));
     $wp_customize->add_control('plx_featured_pages_display', array(
         'label'       => __('Parallax Pages Display', 'plx-parallax'),
-        'description' => __('Choose between summary cards or rendering each selected page with its full content in the chosen order.', 'plx-parallax'),
+        'description' => __('Choose between summary cards, full content panels, or full-width parallax flow sections in the chosen order.', 'plx-parallax'),
         'section'     => 'plx_content_section',
         'type'        => 'select',
         'choices'     => plx_parallax_get_featured_pages_display_choices(),

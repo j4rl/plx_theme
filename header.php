@@ -15,7 +15,7 @@ if (! defined('ABSPATH')) {
     <header class="site-header <?php echo get_theme_mod('plx_sticky_header', true) ? '' : 'is-static'; ?>" data-sticky="<?php echo get_theme_mod('plx_sticky_header', true) ? 'true' : 'false'; ?>">
         <div class="site-header__bar">
             <a class="brand-mark" href="<?php echo esc_url(home_url('/')); ?>">
-                <span class="brand-mark__badge"><?php echo esc_html(substr(get_bloginfo('name'), 0, 2)); ?></span>
+                <span class="brand-mark__badge"><?php echo esc_html(substr(get_bloginfo('name'), 0, 4)); ?></span>
                 <span class="brand-mark__meta">
                     <span class="brand-mark__title"><?php bloginfo('name'); ?></span>
                     <span class="brand-mark__tagline"><?php bloginfo('description'); ?></span>
