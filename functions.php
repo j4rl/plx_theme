@@ -499,15 +499,6 @@ function plx_parallax_excerpt_more() {
 }
 add_filter('excerpt_more', 'plx_parallax_excerpt_more');
 
-function plx_parallax_register_support_settings() {
-    register_setting('plx_parallax_support', 'plx_parallax_paypal_url', array(
-        'type'              => 'string',
-        'sanitize_callback' => 'esc_url_raw',
-        'default'           => '',
-    ));
-}
-add_action('admin_init', 'plx_parallax_register_support_settings');
-
 function plx_parallax_add_admin_menu() {
     add_theme_page(
         __('Support Theme', 'plx-parallax'),
@@ -524,45 +515,35 @@ function plx_parallax_render_support_page() {
         return;
     }
 
-    $paypal_url = get_option('plx_parallax_paypal_url', '');
+    $qr_path = get_template_directory() . '/assets/images/paypal-qr.png';
+    $qr_url  = get_template_directory_uri() . '/assets/images/paypal-qr.png';
     ?>
     <div class="wrap">
         <h1><?php esc_html_e('Support Jarl Parallax', 'plx-parallax'); ?></h1>
-        <p><?php esc_html_e('Add your PayPal donation link here. The admin page will then show a donation button that opens the saved PayPal URL.', 'plx-parallax'); ?></p>
 
-        <form action="options.php" method="post">
-            <?php settings_fields('plx_parallax_support'); ?>
-            <table class="form-table" role="presentation">
-                <tr>
-                    <th scope="row">
-                        <label for="plx_parallax_paypal_url"><?php esc_html_e('PayPal donation URL', 'plx-parallax'); ?></label>
-                    </th>
-                    <td>
-                        <input
-                            type="url"
-                            class="regular-text"
-                            id="plx_parallax_paypal_url"
-                            name="plx_parallax_paypal_url"
-                            value="<?php echo esc_attr($paypal_url); ?>"
-                            placeholder="https://paypal.me/yourname"
-                        >
-                        <p class="description"><?php esc_html_e('Use a full PayPal link, for example a PayPal.Me URL or a hosted donation URL.', 'plx-parallax'); ?></p>
-                    </td>
-                </tr>
-            </table>
-            <?php submit_button(__('Save Donation Link', 'plx-parallax')); ?>
-        </form>
+        <div style="max-width:960px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,360px);gap:24px;align-items:start;margin-top:24px;">
+            <div style="background:#ffffff;border:1px solid #dcdcde;border-radius:20px;padding:28px;box-shadow:0 12px 32px rgba(15,23,42,0.08);">
+                <h2 style="margin-top:0;"><?php esc_html_e('Who is behind this?', 'plx-parallax'); ?></h2>
+                <p><?php esc_html_e('This theme was built by Charlie Jarl in his spare time.', 'plx-parallax'); ?></p>
+                <p><?php esc_html_e('If you think it is good, say it out loud. Share it. Use it.', 'plx-parallax'); ?></p>
+                <p><?php esc_html_e('The theme is free for a reason: good things should not be hidden behind paywalls.', 'plx-parallax'); ?></p>
+                <p><?php esc_html_e('But if you want to show real appreciation, a donation is hugely appreciated.', 'plx-parallax'); ?></p>
+                <p><?php esc_html_e('Completely optional. Entirely up to you.', 'plx-parallax'); ?></p>
+                <p style="margin-bottom:0;"><?php esc_html_e('Scan the PayPal code if you want, and pay whatever you think it is worth.', 'plx-parallax'); ?></p>
+            </div>
 
-        <?php if (! empty($paypal_url)) : ?>
-            <hr>
-            <h2><?php esc_html_e('Preview', 'plx-parallax'); ?></h2>
-            <p><?php esc_html_e('When this link is set, administrators can use the button below to open the donation page.', 'plx-parallax'); ?></p>
-            <p>
-                <a class="button button-primary button-hero" href="<?php echo esc_url($paypal_url); ?>" target="_blank" rel="noopener noreferrer">
-                    <?php esc_html_e('Donate with PayPal', 'plx-parallax'); ?>
-                </a>
-            </p>
-        <?php endif; ?>
+            <div style="background:#ffffff;border:1px solid #dcdcde;border-radius:20px;padding:20px;box-shadow:0 12px 32px rgba(15,23,42,0.08);text-align:center;">
+                <?php if (file_exists($qr_path)) : ?>
+                    <img
+                        src="<?php echo esc_url($qr_url); ?>"
+                        alt="<?php esc_attr_e('PayPal QR code for donations', 'plx-parallax'); ?>"
+                        style="display:block;width:100%;height:auto;border-radius:16px;background:#ffffff;"
+                    >
+                <?php else : ?>
+                    <p><?php esc_html_e('The QR code could not be found in the theme.', 'plx-parallax'); ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
     <?php
 }

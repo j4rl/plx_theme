@@ -4,13 +4,14 @@ Theme URI: https://j4rl.se/themes/jarl-parallax
 Author: ©j4rl
 Author URI: https://j4rl.se
 Description: A responsive WordPress parallax theme with gradients, imagery, Google Font selection, and customizable behavior.
-Version: 1.4.0
+Version: 1.5.0
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: jarl-parallax
+Text Domain: plx-parallax
+Domain Path: /languages
 Tags: custom-background, custom-colors, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
 

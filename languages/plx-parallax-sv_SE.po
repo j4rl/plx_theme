@@ -1,0 +1,518 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jarl Parallax\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-08 11:49+0000\n"
+"PO-Revision-Date: 2026-04-08 12:30+0000\n"
+"Last-Translator: Charlie Jarl\n"
+"Language-Team: Swedish\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Codex\n"
+
+msgid "404"
+msgstr "404"
+
+msgid "That page does not exist."
+msgstr "Den sidan finns inte."
+
+msgid "Go home"
+msgstr "Gå till startsidan"
+
+msgid "Open blog"
+msgstr "Öppna bloggen"
+
+msgid "Previous"
+msgstr "Föregående"
+
+msgid "Next"
+msgstr "Nästa"
+
+msgid "Archive"
+msgstr "Arkiv"
+
+msgid "No archive entries found."
+msgstr "Inga arkivinlägg hittades."
+
+msgid "There is no content in this archive yet. Try another section or return to the front page."
+msgstr "Det finns inget innehåll i detta arkiv ännu. Prova en annan sektion eller gå tillbaka till startsidan."
+
+msgid "Back to front page"
+msgstr "Tillbaka till startsidan"
+
+msgid "Selected pages"
+msgstr "Utvalda sidor"
+
+msgid "Call to action"
+msgstr "Uppmaning"
+
+msgid "Parallax WordPress Theme"
+msgstr "Parallax WordPress-tema"
+
+msgid "Build depth into every scroll."
+msgstr "Bygg in djup i varje scroll."
+
+msgid "A sharp, responsive theme with flexible gradients, background imagery, typography controls, and motion tuned for both desktop and mobile."
+msgstr "Ett skarpt, responsivt tema med flexibla gradients, bakgrundsbilder, typografikontroller och rörelse justerad för både desktop och mobil."
+
+msgid "Explore the layout"
+msgstr "Utforska layouten"
+
+msgid "Read the latest posts"
+msgstr "Läs de senaste inläggen"
+
+msgid "Theme profile"
+msgstr "Temaprofil"
+
+msgid "Fluid"
+msgstr "Flytande"
+
+msgid "Responsive across desktop, tablet, and mobile."
+msgstr "Responsivt på desktop, surfplatta och mobil."
+
+msgid "Custom"
+msgstr "Anpassat"
+
+msgid "Fonts, colors, images, and gradients from Customizer."
+msgstr "Typsnitt, färger, bilder och gradients från Anpassaren."
+
+msgid "Motion"
+msgstr "Rörelse"
+
+msgid "Parallax tuned with optional mobile fallback."
+msgstr "Parallax justerad med valbar mobil fallback."
+
+msgid "Editorial"
+msgstr "Redaktionell"
+
+msgid "Strong visual rhythm for landing pages and content."
+msgstr "Stark visuell rytm för landningssidor och innehåll."
+
+msgid "A front page that feels layered, not flat."
+msgstr "En startsida som känns lagerbyggd, inte platt."
+
+msgid "The theme uses image depth, gradient composition, and restrained motion to create presence without breaking usability. Adjust the visual system from the Customizer and keep the layout seamless on both large and small screens."
+msgstr "Temat använder bilddjup, gradientkomposition och återhållsam rörelse för att skapa närvaro utan att förstöra användbarheten. Justera det visuella systemet i Anpassaren och behåll layouten sömlös på både stora och små skärmar."
+
+msgid "Gradient control"
+msgstr "Gradientkontroll"
+
+msgid "Three gradient stops, adjustable angle, and overlay intensity."
+msgstr "Tre gradientstopp, justerbar vinkel och overlay-intensitet."
+
+msgid "Image layers"
+msgstr "Bildlager"
+
+msgid "Hero and panel imagery can be swapped without editing templates."
+msgstr "Hero- och panelbilder kan bytas utan att redigera mallarna."
+
+msgid "Behavior tuning"
+msgstr "Beteendejustering"
+
+msgid "Sticky header, smooth scroll, parallax speed, and mobile handling."
+msgstr "Klistrad header, mjuk scroll, parallaxhastighet och mobilhantering."
+
+msgid "Start with a static front page."
+msgstr "Börja med en statisk startsida."
+
+msgid "Create a page in WordPress, assign it as your homepage, and its content will appear here under the parallax hero."
+msgstr "Skapa en sida i WordPress, ange den som startsida och dess innehåll visas här under parallax-heron."
+
+msgid "Latest stories"
+msgstr "Senaste inläggen"
+
+msgid "Parallax pages"
+msgstr "Parallaxsidor"
+
+msgid "Select pages in the theme settings and decide exactly how they should stack through the front page experience."
+msgstr "Välj sidor i temainställningarna och bestäm exakt hur de ska staplas genom startsidans upplevelse."
+
+msgid "Open page"
+msgstr "Öppna sida"
+
+msgid "Give the scroll a destination."
+msgstr "Ge scrollandet ett mål."
+
+msgid "Use this closing section for contact, bookings, launch messaging, or a single strong call to action."
+msgstr "Använd denna avslutande sektion för kontakt, bokningar, lanseringsbudskap eller en enda stark call to action."
+
+msgid "Start a project"
+msgstr "Starta ett projekt"
+
+msgid "Parallax-ready, responsive, and customizable."
+msgstr "Klar för parallax, responsiv och anpassningsbar."
+
+msgid "Primary Menu"
+msgstr "Primär meny"
+
+msgid "Image left"
+msgstr "Bild vänster"
+
+msgid "Image right"
+msgstr "Bild höger"
+
+msgid "Stacked"
+msgstr "Staplad"
+
+msgid "Compact"
+msgstr "Kompakt"
+
+msgid "Cards"
+msgstr "Kort"
+
+msgid "Full content"
+msgstr "Fullt innehåll"
+
+msgid "Parallax flow"
+msgstr "Parallaxflöde"
+
+msgid "Gradient"
+msgstr "Gradient"
+
+msgid "Solid color"
+msgstr "Enfärgad"
+
+msgid "Slot %d"
+msgstr "Plats %d"
+
+msgid "No page selected"
+msgstr "Ingen sida vald"
+
+msgid "Click to edit"
+msgstr "Klicka för att redigera"
+
+msgid "Support Theme"
+msgstr "Stöd temat"
+
+msgid "Home"
+msgstr "Hem"
+
+msgid "Blog"
+msgstr "Blogg"
+
+msgid "Support Jarl Parallax"
+msgstr "Stöd Jarl Parallax"
+
+msgid "Who is behind this?"
+msgstr "Vem ligger bakom detta?"
+
+msgid "This theme was built by Charlie Jarl in his spare time."
+msgstr "Detta tema byggdes av Charlie Jarl på fritiden."
+
+msgid "If you think it is good, say it out loud. Share it. Use it."
+msgstr "Tycker du att det är bra, säg det högt. Dela det. Använd det."
+
+msgid "The theme is free for a reason: good things should not be hidden behind paywalls."
+msgstr "Temat är gratis av en anledning: bra saker ska inte gömmas bakom betalväggar."
+
+msgid "But if you want to show real appreciation, a donation is hugely appreciated."
+msgstr "Men om du vill visa verklig uppskattning så uppskattas en donation enormt."
+
+msgid "Completely optional. Entirely up to you."
+msgstr "Helt frivilligt. Helt upp till dig."
+
+msgid "Scan the PayPal code if you want, and pay whatever you think it is worth."
+msgstr "Skanna PayPal-koden om du vill och betala det du tycker att det är värt."
+
+msgid "The QR code could not be found in the theme."
+msgstr "QR-koden kunde inte hittas i temat."
+
+msgid "PayPal QR code for donations"
+msgstr "PayPal QR-kod för donationer"
+
+msgid "Menu"
+msgstr "Meny"
+
+msgid "Primary menu"
+msgstr "Primär meny"
+
+msgid "Nothing published yet."
+msgstr "Inget publicerat ännu."
+
+msgid "Create posts or pages and they will appear here."
+msgstr "Skapa inlägg eller sidor så visas de här."
+
+msgid "Results for \"%s\""
+msgstr "Resultat för \"%s\""
+
+msgid "Search"
+msgstr "Sök"
+
+msgid "Refine the search or browse the matching content below."
+msgstr "Förfina sökningen eller bläddra bland det matchande innehållet nedan."
+
+msgid "No matches found."
+msgstr "Inga träffar hittades."
+
+msgid "Try a broader phrase, a shorter keyword, or browse the site manually."
+msgstr "Prova en bredare fras, ett kortare sökord eller bläddra manuellt på sajten."
+
+msgid "Search the site"
+msgstr "Sök på sajten"
+
+msgid "Search for:"
+msgstr "Sök efter:"
+
+msgid "PLX Theme Options"
+msgstr "PLX Theme-inställningar"
+
+msgid "Hero"
+msgstr "Hero"
+
+msgid "Eyebrow Text"
+msgstr "Överrubrik"
+
+msgid "Hero Title"
+msgstr "Hero-rubrik"
+
+msgid "Hero Text"
+msgstr "Hero-text"
+
+msgid "Primary Button Text"
+msgstr "Primär knapptext"
+
+msgid "Primary Button URL"
+msgstr "Primär knapp-URL"
+
+msgid "Secondary Button Text"
+msgstr "Sekundär knapptext"
+
+msgid "Secondary Button URL"
+msgstr "Sekundär knapp-URL"
+
+msgid "Hero Background Image"
+msgstr "Hero-bakgrundsbild"
+
+msgid "Intro Panel Image"
+msgstr "Intro-panelbild"
+
+msgid "Profile & Stats"
+msgstr "Profil och statistik"
+
+msgid "Intro Section"
+msgstr "Introsektion"
+
+msgid "Parallax Pages"
+msgstr "Parallaxsidor"
+
+msgid "Recent Posts"
+msgstr "Senaste inlägg"
+
+msgid "CTA Section"
+msgstr "CTA-sektion"
+
+msgid "Footer"
+msgstr "Sidfot"
+
+msgid "Profile Card Title"
+msgstr "Profilkortets titel"
+
+msgid "Stat %d Title"
+msgstr "Statistik %d titel"
+
+msgid "Stat %d Text"
+msgstr "Statistik %d text"
+
+msgid "Show Intro Section"
+msgstr "Visa introsektion"
+
+msgid "Intro Title"
+msgstr "Introtitel"
+
+msgid "Intro Text"
+msgstr "Introtext"
+
+msgid "Feature %d Title"
+msgstr "Funktion %d titel"
+
+msgid "Feature %d Text"
+msgstr "Funktion %d text"
+
+msgid "Empty Content Title"
+msgstr "Titel för tomt innehåll"
+
+msgid "Empty Content Text"
+msgstr "Text för tomt innehåll"
+
+msgid "Show Recent Posts Section"
+msgstr "Visa sektionen Senaste inlägg"
+
+msgid "Recent Posts Title"
+msgstr "Titel för senaste inlägg"
+
+msgid "Recent Posts Count"
+msgstr "Antal senaste inlägg"
+
+msgid "Footer Tagline"
+msgstr "Sidfotens tagline"
+
+msgid "Show Parallax Pages Section"
+msgstr "Visa sektionen Parallaxsidor"
+
+msgid "Parallax Pages Title"
+msgstr "Titel för Parallaxsidor"
+
+msgid "Parallax Pages Text"
+msgstr "Text för Parallaxsidor"
+
+msgid "Parallax Pages Button Text"
+msgstr "Knapptext för Parallaxsidor"
+
+msgid "Parallax Pages Display"
+msgstr "Visning för Parallaxsidor"
+
+msgid "Choose between summary cards, full content panels, or full-width parallax flow sections in the chosen order."
+msgstr "Välj mellan sammanfattningskort, paneler med fullt innehåll eller sektioner i full bredd med parallaxflöde i vald ordning."
+
+msgid "Parallax Page Order"
+msgstr "Ordning för Parallaxsidor"
+
+msgid "Drag slots to change the page order on the front page."
+msgstr "Dra slots för att ändra sidornas ordning på startsidan."
+
+msgid "Page Slot %d"
+msgstr "Sidslot %d"
+
+msgid "Page Slot %d Layout"
+msgstr "Layout för sidslot %d"
+
+msgid "Page Slot %d Background Base"
+msgstr "Bakgrundsbas för sidslot %d"
+
+msgid "Choose whether the panel background starts from a gradient or a single color. You can also place an image on top with opacity below."
+msgstr "Välj om panelens bakgrund ska börja med en gradient eller en enfärg. Du kan också lägga en bild ovanpå med opacitet nedan."
+
+msgid "Page Slot %d Gradient Color 1"
+msgstr "Sidslot %d gradientfärg 1"
+
+msgid "Page Slot %d Gradient Color 2"
+msgstr "Sidslot %d gradientfärg 2"
+
+msgid "Page Slot %d Solid Background Color"
+msgstr "Sidslot %d enfärgad bakgrund"
+
+msgid "Page Slot %d Background Image"
+msgstr "Sidslot %d bakgrundsbild"
+
+msgid "Optional image overlay for the panel background."
+msgstr "Valfri bildöverlagring för panelbakgrunden."
+
+msgid "Page Slot %d Background Image Opacity"
+msgstr "Sidslot %d bakgrundsbildens opacitet"
+
+msgid "Show CTA Section"
+msgstr "Visa CTA-sektion"
+
+msgid "CTA Title"
+msgstr "CTA-rubrik"
+
+msgid "CTA Text"
+msgstr "CTA-text"
+
+msgid "CTA Button Text"
+msgstr "CTA-knapptext"
+
+msgid "CTA Button URL"
+msgstr "CTA-knapp-URL"
+
+msgid "Appearance"
+msgstr "Utseende"
+
+msgid "Color Mode"
+msgstr "Färgläge"
+
+msgid "Light"
+msgstr "Ljust"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Dark"
+msgstr "Mörkt"
+
+msgid "Primary Color"
+msgstr "Primär färg"
+
+msgid "Accent Color"
+msgstr "Accentfärg"
+
+msgid "Surface Color"
+msgstr "Ytfärg"
+
+msgid "Text Color"
+msgstr "Textfärg"
+
+msgid "Inverse Text Color"
+msgstr "Inverterad textfärg"
+
+msgid "Gradient Color 1"
+msgstr "Gradientfärg 1"
+
+msgid "Gradient Color 2"
+msgstr "Gradientfärg 2"
+
+msgid "Gradient Color 3"
+msgstr "Gradientfärg 3"
+
+msgid "Dark Mode Colors"
+msgstr "Mörka färger"
+
+msgid "Dark Primary Color"
+msgstr "Mörk primär färg"
+
+msgid "Dark Accent Color"
+msgstr "Mörk accentfärg"
+
+msgid "Dark Surface Color"
+msgstr "Mörk ytfärg"
+
+msgid "Dark Text Color"
+msgstr "Mörk textfärg"
+
+msgid "Dark Inverse Text Color"
+msgstr "Mörk inverterad textfärg"
+
+msgid "Dark Gradient Color 1"
+msgstr "Mörk gradientfärg 1"
+
+msgid "Dark Gradient Color 2"
+msgstr "Mörk gradientfärg 2"
+
+msgid "Dark Gradient Color 3"
+msgstr "Mörk gradientfärg 3"
+
+msgid "Dark Hero Overlay Opacity"
+msgstr "Opacitet för mörk hero-overlay"
+
+msgid "Google Font"
+msgstr "Google-typsnitt"
+
+msgid "Gradient Angle"
+msgstr "Gradientvinkel"
+
+msgid "Hero Overlay Opacity"
+msgstr "Hero-overlayens opacitet"
+
+msgid "Behavior"
+msgstr "Beteende"
+
+msgid "Enable Parallax"
+msgstr "Aktivera parallax"
+
+msgid "Disable Parallax on Mobile"
+msgstr "Inaktivera parallax på mobil"
+
+msgid "Sticky Header"
+msgstr "Klistrad header"
+
+msgid "Smooth Scroll"
+msgstr "Mjuk scroll"
+
+msgid "Parallax Speed"
+msgstr "Parallaxhastighet"
+
+msgid "Content Width"
+msgstr "Innehållsbredd"

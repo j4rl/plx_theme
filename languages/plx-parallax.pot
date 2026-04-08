@@ -1,0 +1,515 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jarl Parallax\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-08 11:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "404"
+msgstr ""
+
+msgid "That page does not exist."
+msgstr ""
+
+msgid "Go home"
+msgstr ""
+
+msgid "Open blog"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Archive"
+msgstr ""
+
+msgid "No archive entries found."
+msgstr ""
+
+msgid "There is no content in this archive yet. Try another section or return to the front page."
+msgstr ""
+
+msgid "Back to front page"
+msgstr ""
+
+msgid "Selected pages"
+msgstr ""
+
+msgid "Call to action"
+msgstr ""
+
+msgid "Parallax WordPress Theme"
+msgstr ""
+
+msgid "Build depth into every scroll."
+msgstr ""
+
+msgid "A sharp, responsive theme with flexible gradients, background imagery, typography controls, and motion tuned for both desktop and mobile."
+msgstr ""
+
+msgid "Explore the layout"
+msgstr ""
+
+msgid "Read the latest posts"
+msgstr ""
+
+msgid "Theme profile"
+msgstr ""
+
+msgid "Fluid"
+msgstr ""
+
+msgid "Responsive across desktop, tablet, and mobile."
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid "Fonts, colors, images, and gradients from Customizer."
+msgstr ""
+
+msgid "Motion"
+msgstr ""
+
+msgid "Parallax tuned with optional mobile fallback."
+msgstr ""
+
+msgid "Editorial"
+msgstr ""
+
+msgid "Strong visual rhythm for landing pages and content."
+msgstr ""
+
+msgid "A front page that feels layered, not flat."
+msgstr ""
+
+msgid "The theme uses image depth, gradient composition, and restrained motion to create presence without breaking usability. Adjust the visual system from the Customizer and keep the layout seamless on both large and small screens."
+msgstr ""
+
+msgid "Gradient control"
+msgstr ""
+
+msgid "Three gradient stops, adjustable angle, and overlay intensity."
+msgstr ""
+
+msgid "Image layers"
+msgstr ""
+
+msgid "Hero and panel imagery can be swapped without editing templates."
+msgstr ""
+
+msgid "Behavior tuning"
+msgstr ""
+
+msgid "Sticky header, smooth scroll, parallax speed, and mobile handling."
+msgstr ""
+
+msgid "Start with a static front page."
+msgstr ""
+
+msgid "Create a page in WordPress, assign it as your homepage, and its content will appear here under the parallax hero."
+msgstr ""
+
+msgid "Latest stories"
+msgstr ""
+
+msgid "Parallax pages"
+msgstr ""
+
+msgid "Select pages in the theme settings and decide exactly how they should stack through the front page experience."
+msgstr ""
+
+msgid "Open page"
+msgstr ""
+
+msgid "Give the scroll a destination."
+msgstr ""
+
+msgid "Use this closing section for contact, bookings, launch messaging, or a single strong call to action."
+msgstr ""
+
+msgid "Start a project"
+msgstr ""
+
+msgid "Parallax-ready, responsive, and customizable."
+msgstr ""
+
+msgid "Primary Menu"
+msgstr ""
+
+msgid "Image left"
+msgstr ""
+
+msgid "Image right"
+msgstr ""
+
+msgid "Stacked"
+msgstr ""
+
+msgid "Compact"
+msgstr ""
+
+msgid "Cards"
+msgstr ""
+
+msgid "Full content"
+msgstr ""
+
+msgid "Parallax flow"
+msgstr ""
+
+msgid "Gradient"
+msgstr ""
+
+msgid "Solid color"
+msgstr ""
+
+msgid "Slot %d"
+msgstr ""
+
+msgid "No page selected"
+msgstr ""
+
+msgid "Click to edit"
+msgstr ""
+
+msgid "Support Theme"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Support Jarl Parallax"
+msgstr ""
+
+msgid "Who is behind this?"
+msgstr ""
+
+msgid "This theme was built by Charlie Jarl in his spare time."
+msgstr ""
+
+msgid "If you think it is good, say it out loud. Share it. Use it."
+msgstr ""
+
+msgid "The theme is free for a reason: good things should not be hidden behind paywalls."
+msgstr ""
+
+msgid "But if you want to show real appreciation, a donation is hugely appreciated."
+msgstr ""
+
+msgid "Completely optional. Entirely up to you."
+msgstr ""
+
+msgid "Scan the PayPal code if you want, and pay whatever you think it is worth."
+msgstr ""
+
+msgid "The QR code could not be found in the theme."
+msgstr ""
+
+msgid "PayPal QR code for donations"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "Primary menu"
+msgstr ""
+
+msgid "Nothing published yet."
+msgstr ""
+
+msgid "Create posts or pages and they will appear here."
+msgstr ""
+
+msgid "Results for \"%s\""
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Refine the search or browse the matching content below."
+msgstr ""
+
+msgid "No matches found."
+msgstr ""
+
+msgid "Try a broader phrase, a shorter keyword, or browse the site manually."
+msgstr ""
+
+msgid "Search the site"
+msgstr ""
+
+msgid "Search for:"
+msgstr ""
+
+msgid "PLX Theme Options"
+msgstr ""
+
+msgid "Hero"
+msgstr ""
+
+msgid "Eyebrow Text"
+msgstr ""
+
+msgid "Hero Title"
+msgstr ""
+
+msgid "Hero Text"
+msgstr ""
+
+msgid "Primary Button Text"
+msgstr ""
+
+msgid "Primary Button URL"
+msgstr ""
+
+msgid "Secondary Button Text"
+msgstr ""
+
+msgid "Secondary Button URL"
+msgstr ""
+
+msgid "Hero Background Image"
+msgstr ""
+
+msgid "Intro Panel Image"
+msgstr ""
+
+msgid "Profile & Stats"
+msgstr ""
+
+msgid "Intro Section"
+msgstr ""
+
+msgid "Parallax Pages"
+msgstr ""
+
+msgid "Recent Posts"
+msgstr ""
+
+msgid "CTA Section"
+msgstr ""
+
+msgid "Footer"
+msgstr ""
+
+msgid "Profile Card Title"
+msgstr ""
+
+msgid "Stat %d Title"
+msgstr ""
+
+msgid "Stat %d Text"
+msgstr ""
+
+msgid "Show Intro Section"
+msgstr ""
+
+msgid "Intro Title"
+msgstr ""
+
+msgid "Intro Text"
+msgstr ""
+
+msgid "Feature %d Title"
+msgstr ""
+
+msgid "Feature %d Text"
+msgstr ""
+
+msgid "Empty Content Title"
+msgstr ""
+
+msgid "Empty Content Text"
+msgstr ""
+
+msgid "Show Recent Posts Section"
+msgstr ""
+
+msgid "Recent Posts Title"
+msgstr ""
+
+msgid "Recent Posts Count"
+msgstr ""
+
+msgid "Footer Tagline"
+msgstr ""
+
+msgid "Show Parallax Pages Section"
+msgstr ""
+
+msgid "Parallax Pages Title"
+msgstr ""
+
+msgid "Parallax Pages Text"
+msgstr ""
+
+msgid "Parallax Pages Button Text"
+msgstr ""
+
+msgid "Parallax Pages Display"
+msgstr ""
+
+msgid "Choose between summary cards, full content panels, or full-width parallax flow sections in the chosen order."
+msgstr ""
+
+msgid "Parallax Page Order"
+msgstr ""
+
+msgid "Drag slots to change the page order on the front page."
+msgstr ""
+
+msgid "Page Slot %d"
+msgstr ""
+
+msgid "Page Slot %d Layout"
+msgstr ""
+
+msgid "Page Slot %d Background Base"
+msgstr ""
+
+msgid "Choose whether the panel background starts from a gradient or a single color. You can also place an image on top with opacity below."
+msgstr ""
+
+msgid "Page Slot %d Gradient Color 1"
+msgstr ""
+
+msgid "Page Slot %d Gradient Color 2"
+msgstr ""
+
+msgid "Page Slot %d Solid Background Color"
+msgstr ""
+
+msgid "Page Slot %d Background Image"
+msgstr ""
+
+msgid "Optional image overlay for the panel background."
+msgstr ""
+
+msgid "Page Slot %d Background Image Opacity"
+msgstr ""
+
+msgid "Show CTA Section"
+msgstr ""
+
+msgid "CTA Title"
+msgstr ""
+
+msgid "CTA Text"
+msgstr ""
+
+msgid "CTA Button Text"
+msgstr ""
+
+msgid "CTA Button URL"
+msgstr ""
+
+msgid "Appearance"
+msgstr ""
+
+msgid "Color Mode"
+msgstr ""
+
+msgid "Light"
+msgstr ""
+
+msgid "Auto"
+msgstr ""
+
+msgid "Dark"
+msgstr ""
+
+msgid "Primary Color"
+msgstr ""
+
+msgid "Accent Color"
+msgstr ""
+
+msgid "Surface Color"
+msgstr ""
+
+msgid "Text Color"
+msgstr ""
+
+msgid "Inverse Text Color"
+msgstr ""
+
+msgid "Gradient Color 1"
+msgstr ""
+
+msgid "Gradient Color 2"
+msgstr ""
+
+msgid "Gradient Color 3"
+msgstr ""
+
+msgid "Dark Mode Colors"
+msgstr ""
+
+msgid "Dark Primary Color"
+msgstr ""
+
+msgid "Dark Accent Color"
+msgstr ""
+
+msgid "Dark Surface Color"
+msgstr ""
+
+msgid "Dark Text Color"
+msgstr ""
+
+msgid "Dark Inverse Text Color"
+msgstr ""
+
+msgid "Dark Gradient Color 1"
+msgstr ""
+
+msgid "Dark Gradient Color 2"
+msgstr ""
+
+msgid "Dark Gradient Color 3"
+msgstr ""
+
+msgid "Dark Hero Overlay Opacity"
+msgstr ""
+
+msgid "Google Font"
+msgstr ""
+
+msgid "Gradient Angle"
+msgstr ""
+
+msgid "Hero Overlay Opacity"
+msgstr ""
+
+msgid "Behavior"
+msgstr ""
+
+msgid "Enable Parallax"
+msgstr ""
+
+msgid "Disable Parallax on Mobile"
+msgstr ""
+
+msgid "Sticky Header"
+msgstr ""
+
+msgid "Smooth Scroll"
+msgstr ""
+
+msgid "Parallax Speed"
+msgstr ""
+
+msgid "Content Width"
+msgstr ""

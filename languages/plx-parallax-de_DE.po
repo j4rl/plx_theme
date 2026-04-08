@@ -1,0 +1,518 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Jarl Parallax\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-08 11:49+0000\n"
+"PO-Revision-Date: 2026-04-08 12:30+0000\n"
+"Last-Translator: Charlie Jarl\n"
+"Language-Team: German\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Codex\n"
+
+msgid "404"
+msgstr "404"
+
+msgid "That page does not exist."
+msgstr "Diese Seite existiert nicht."
+
+msgid "Go home"
+msgstr "Zur Startseite"
+
+msgid "Open blog"
+msgstr "Blog öffnen"
+
+msgid "Previous"
+msgstr "Zurück"
+
+msgid "Next"
+msgstr "Weiter"
+
+msgid "Archive"
+msgstr "Archiv"
+
+msgid "No archive entries found."
+msgstr "Keine Archiveinträge gefunden."
+
+msgid "There is no content in this archive yet. Try another section or return to the front page."
+msgstr "In diesem Archiv gibt es noch keine Inhalte. Versuchen Sie einen anderen Bereich oder kehren Sie zur Startseite zurück."
+
+msgid "Back to front page"
+msgstr "Zurück zur Startseite"
+
+msgid "Selected pages"
+msgstr "Ausgewählte Seiten"
+
+msgid "Call to action"
+msgstr "Handlungsaufforderung"
+
+msgid "Parallax WordPress Theme"
+msgstr "Parallax-WordPress-Theme"
+
+msgid "Build depth into every scroll."
+msgstr "Bringen Sie Tiefe in jeden Scroll."
+
+msgid "A sharp, responsive theme with flexible gradients, background imagery, typography controls, and motion tuned for both desktop and mobile."
+msgstr "Ein klares, responsives Theme mit flexiblen Verläufen, Hintergrundbildern, Typografie-Steuerung und Bewegung, abgestimmt auf Desktop und Mobilgeräte."
+
+msgid "Explore the layout"
+msgstr "Layout erkunden"
+
+msgid "Read the latest posts"
+msgstr "Neueste Beiträge lesen"
+
+msgid "Theme profile"
+msgstr "Theme-Profil"
+
+msgid "Fluid"
+msgstr "Fließend"
+
+msgid "Responsive across desktop, tablet, and mobile."
+msgstr "Responsiv auf Desktop, Tablet und Mobilgeräten."
+
+msgid "Custom"
+msgstr "Individuell"
+
+msgid "Fonts, colors, images, and gradients from Customizer."
+msgstr "Schriftarten, Farben, Bilder und Verläufe aus dem Customizer."
+
+msgid "Motion"
+msgstr "Bewegung"
+
+msgid "Parallax tuned with optional mobile fallback."
+msgstr "Parallax mit optionalem Fallback für Mobilgeräte abgestimmt."
+
+msgid "Editorial"
+msgstr "Redaktionell"
+
+msgid "Strong visual rhythm for landing pages and content."
+msgstr "Starker visueller Rhythmus für Landingpages und Inhalte."
+
+msgid "A front page that feels layered, not flat."
+msgstr "Eine Startseite, die sich geschichtet statt flach anfühlt."
+
+msgid "The theme uses image depth, gradient composition, and restrained motion to create presence without breaking usability. Adjust the visual system from the Customizer and keep the layout seamless on both large and small screens."
+msgstr "Das Theme nutzt Bildtiefe, Verlaufskomposition und zurückhaltende Bewegung, um Präsenz zu schaffen, ohne die Benutzerfreundlichkeit zu beeinträchtigen. Passen Sie das visuelle System im Customizer an und halten Sie das Layout auf großen und kleinen Bildschirmen nahtlos."
+
+msgid "Gradient control"
+msgstr "Verlaufskontrolle"
+
+msgid "Three gradient stops, adjustable angle, and overlay intensity."
+msgstr "Drei Farbverlaufspunkte, anpassbarer Winkel und Overlay-Intensität."
+
+msgid "Image layers"
+msgstr "Bildebenen"
+
+msgid "Hero and panel imagery can be swapped without editing templates."
+msgstr "Hero- und Panelbilder können ausgetauscht werden, ohne Templates zu bearbeiten."
+
+msgid "Behavior tuning"
+msgstr "Verhaltensabstimmung"
+
+msgid "Sticky header, smooth scroll, parallax speed, and mobile handling."
+msgstr "Sticky Header, sanftes Scrollen, Parallax-Geschwindigkeit und Mobilverhalten."
+
+msgid "Start with a static front page."
+msgstr "Beginnen Sie mit einer statischen Startseite."
+
+msgid "Create a page in WordPress, assign it as your homepage, and its content will appear here under the parallax hero."
+msgstr "Erstellen Sie eine Seite in WordPress, weisen Sie sie als Startseite zu, und ihr Inhalt erscheint hier unter dem Parallax-Hero."
+
+msgid "Latest stories"
+msgstr "Neueste Geschichten"
+
+msgid "Parallax pages"
+msgstr "Parallax-Seiten"
+
+msgid "Select pages in the theme settings and decide exactly how they should stack through the front page experience."
+msgstr "Wählen Sie Seiten in den Theme-Einstellungen und legen Sie genau fest, wie sie im Startseitenerlebnis angeordnet werden."
+
+msgid "Open page"
+msgstr "Seite öffnen"
+
+msgid "Give the scroll a destination."
+msgstr "Geben Sie dem Scrollen ein Ziel."
+
+msgid "Use this closing section for contact, bookings, launch messaging, or a single strong call to action."
+msgstr "Nutzen Sie diesen Abschlussbereich für Kontakt, Buchungen, Launch-Kommunikation oder einen einzelnen starken Call-to-Action."
+
+msgid "Start a project"
+msgstr "Ein Projekt starten"
+
+msgid "Parallax-ready, responsive, and customizable."
+msgstr "Bereit für Parallax, responsiv und anpassbar."
+
+msgid "Primary Menu"
+msgstr "Primäres Menü"
+
+msgid "Image left"
+msgstr "Bild links"
+
+msgid "Image right"
+msgstr "Bild rechts"
+
+msgid "Stacked"
+msgstr "Gestapelt"
+
+msgid "Compact"
+msgstr "Kompakt"
+
+msgid "Cards"
+msgstr "Karten"
+
+msgid "Full content"
+msgstr "Vollständiger Inhalt"
+
+msgid "Parallax flow"
+msgstr "Parallax-Fluss"
+
+msgid "Gradient"
+msgstr "Verlauf"
+
+msgid "Solid color"
+msgstr "Einzelfarbe"
+
+msgid "Slot %d"
+msgstr "Slot %d"
+
+msgid "No page selected"
+msgstr "Keine Seite ausgewählt"
+
+msgid "Click to edit"
+msgstr "Klicken zum Bearbeiten"
+
+msgid "Support Theme"
+msgstr "Theme unterstützen"
+
+msgid "Home"
+msgstr "Startseite"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Support Jarl Parallax"
+msgstr "Jarl Parallax unterstützen"
+
+msgid "Who is behind this?"
+msgstr "Wer steckt dahinter?"
+
+msgid "This theme was built by Charlie Jarl in his spare time."
+msgstr "Dieses Theme wurde von Charlie Jarl in seiner Freizeit entwickelt."
+
+msgid "If you think it is good, say it out loud. Share it. Use it."
+msgstr "Wenn Sie es gut finden, sagen Sie es laut. Teilen Sie es. Nutzen Sie es."
+
+msgid "The theme is free for a reason: good things should not be hidden behind paywalls."
+msgstr "Das Theme ist aus gutem Grund kostenlos: Gute Dinge sollten nicht hinter Paywalls versteckt werden."
+
+msgid "But if you want to show real appreciation, a donation is hugely appreciated."
+msgstr "Wenn Sie echte Wertschätzung zeigen möchten, freuen wir uns sehr über eine Spende."
+
+msgid "Completely optional. Entirely up to you."
+msgstr "Vollkommen freiwillig. Ganz Ihnen überlassen."
+
+msgid "Scan the PayPal code if you want, and pay whatever you think it is worth."
+msgstr "Scannen Sie den PayPal-Code, wenn Sie möchten, und zahlen Sie, was Sie für angemessen halten."
+
+msgid "The QR code could not be found in the theme."
+msgstr "Der QR-Code konnte im Theme nicht gefunden werden."
+
+msgid "PayPal QR code for donations"
+msgstr "PayPal-QR-Code für Spenden"
+
+msgid "Menu"
+msgstr "Menü"
+
+msgid "Primary menu"
+msgstr "Primäres Menü"
+
+msgid "Nothing published yet."
+msgstr "Noch nichts veröffentlicht."
+
+msgid "Create posts or pages and they will appear here."
+msgstr "Erstellen Sie Beiträge oder Seiten, dann erscheinen sie hier."
+
+msgid "Results for \"%s\""
+msgstr "Ergebnisse für \"%s\""
+
+msgid "Search"
+msgstr "Suche"
+
+msgid "Refine the search or browse the matching content below."
+msgstr "Verfeinern Sie die Suche oder durchsuchen Sie die passenden Inhalte unten."
+
+msgid "No matches found."
+msgstr "Keine Treffer gefunden."
+
+msgid "Try a broader phrase, a shorter keyword, or browse the site manually."
+msgstr "Versuchen Sie einen allgemeineren Ausdruck, ein kürzeres Stichwort oder durchsuchen Sie die Website manuell."
+
+msgid "Search the site"
+msgstr "Website durchsuchen"
+
+msgid "Search for:"
+msgstr "Suchen nach:"
+
+msgid "PLX Theme Options"
+msgstr "PLX Theme-Optionen"
+
+msgid "Hero"
+msgstr "Hero"
+
+msgid "Eyebrow Text"
+msgstr "Vorspanntext"
+
+msgid "Hero Title"
+msgstr "Hero-Titel"
+
+msgid "Hero Text"
+msgstr "Hero-Text"
+
+msgid "Primary Button Text"
+msgstr "Text der primären Schaltfläche"
+
+msgid "Primary Button URL"
+msgstr "URL der primären Schaltfläche"
+
+msgid "Secondary Button Text"
+msgstr "Text der sekundären Schaltfläche"
+
+msgid "Secondary Button URL"
+msgstr "URL der sekundären Schaltfläche"
+
+msgid "Hero Background Image"
+msgstr "Hero-Hintergrundbild"
+
+msgid "Intro Panel Image"
+msgstr "Intro-Panelbild"
+
+msgid "Profile & Stats"
+msgstr "Profil und Statistiken"
+
+msgid "Intro Section"
+msgstr "Einleitungsbereich"
+
+msgid "Parallax Pages"
+msgstr "Parallax-Seiten"
+
+msgid "Recent Posts"
+msgstr "Neueste Beiträge"
+
+msgid "CTA Section"
+msgstr "CTA-Bereich"
+
+msgid "Footer"
+msgstr "Footer"
+
+msgid "Profile Card Title"
+msgstr "Titel der Profilkarte"
+
+msgid "Stat %d Title"
+msgstr "Statistik %d Titel"
+
+msgid "Stat %d Text"
+msgstr "Statistik %d Text"
+
+msgid "Show Intro Section"
+msgstr "Einleitungsbereich anzeigen"
+
+msgid "Intro Title"
+msgstr "Einleitungstitel"
+
+msgid "Intro Text"
+msgstr "Einleitungstext"
+
+msgid "Feature %d Title"
+msgstr "Feature-%d-Titel"
+
+msgid "Feature %d Text"
+msgstr "Feature-%d-Text"
+
+msgid "Empty Content Title"
+msgstr "Titel für leeren Inhalt"
+
+msgid "Empty Content Text"
+msgstr "Text für leeren Inhalt"
+
+msgid "Show Recent Posts Section"
+msgstr "Bereich Neueste Beiträge anzeigen"
+
+msgid "Recent Posts Title"
+msgstr "Titel der neuesten Beiträge"
+
+msgid "Recent Posts Count"
+msgstr "Anzahl neuester Beiträge"
+
+msgid "Footer Tagline"
+msgstr "Footer-Slogan"
+
+msgid "Show Parallax Pages Section"
+msgstr "Bereich Parallax-Seiten anzeigen"
+
+msgid "Parallax Pages Title"
+msgstr "Titel der Parallax-Seiten"
+
+msgid "Parallax Pages Text"
+msgstr "Text der Parallax-Seiten"
+
+msgid "Parallax Pages Button Text"
+msgstr "Schaltflächentext für Parallax-Seiten"
+
+msgid "Parallax Pages Display"
+msgstr "Anzeige für Parallax-Seiten"
+
+msgid "Choose between summary cards, full content panels, or full-width parallax flow sections in the chosen order."
+msgstr "Wählen Sie zwischen Zusammenfassungskarten, Panels mit vollständigem Inhalt oder vollbreiten Parallax-Flow-Bereichen in der gewählten Reihenfolge."
+
+msgid "Parallax Page Order"
+msgstr "Reihenfolge der Parallax-Seiten"
+
+msgid "Drag slots to change the page order on the front page."
+msgstr "Ziehen Sie Slots, um die Reihenfolge der Seiten auf der Startseite zu ändern."
+
+msgid "Page Slot %d"
+msgstr "Seitenslot %d"
+
+msgid "Page Slot %d Layout"
+msgstr "Layout für Seitenslot %d"
+
+msgid "Page Slot %d Background Base"
+msgstr "Hintergrundbasis für Seitenslot %d"
+
+msgid "Choose whether the panel background starts from a gradient or a single color. You can also place an image on top with opacity below."
+msgstr "Wählen Sie, ob der Panel-Hintergrund mit einem Verlauf oder einer Einzelfarbe beginnt. Sie können auch ein Bild darüber mit untenstehender Deckkraft platzieren."
+
+msgid "Page Slot %d Gradient Color 1"
+msgstr "Seitenslot %d Verlaufsfarbe 1"
+
+msgid "Page Slot %d Gradient Color 2"
+msgstr "Seitenslot %d Verlaufsfarbe 2"
+
+msgid "Page Slot %d Solid Background Color"
+msgstr "Seitenslot %d Hintergrundfarbe"
+
+msgid "Page Slot %d Background Image"
+msgstr "Seitenslot %d Hintergrundbild"
+
+msgid "Optional image overlay for the panel background."
+msgstr "Optionales Bild-Overlay für den Panel-Hintergrund."
+
+msgid "Page Slot %d Background Image Opacity"
+msgstr "Deckkraft des Hintergrundbilds für Seitenslot %d"
+
+msgid "Show CTA Section"
+msgstr "CTA-Bereich anzeigen"
+
+msgid "CTA Title"
+msgstr "CTA-Titel"
+
+msgid "CTA Text"
+msgstr "CTA-Text"
+
+msgid "CTA Button Text"
+msgstr "CTA-Schaltflächentext"
+
+msgid "CTA Button URL"
+msgstr "CTA-Schaltflächen-URL"
+
+msgid "Appearance"
+msgstr "Erscheinungsbild"
+
+msgid "Color Mode"
+msgstr "Farbmodus"
+
+msgid "Light"
+msgstr "Hell"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "Dark"
+msgstr "Dunkel"
+
+msgid "Primary Color"
+msgstr "Primärfarbe"
+
+msgid "Accent Color"
+msgstr "Akzentfarbe"
+
+msgid "Surface Color"
+msgstr "Flächenfarbe"
+
+msgid "Text Color"
+msgstr "Textfarbe"
+
+msgid "Inverse Text Color"
+msgstr "Invertierte Textfarbe"
+
+msgid "Gradient Color 1"
+msgstr "Verlaufsfarbe 1"
+
+msgid "Gradient Color 2"
+msgstr "Verlaufsfarbe 2"
+
+msgid "Gradient Color 3"
+msgstr "Verlaufsfarbe 3"
+
+msgid "Dark Mode Colors"
+msgstr "Farben für den Dunkelmodus"
+
+msgid "Dark Primary Color"
+msgstr "Dunkle Primärfarbe"
+
+msgid "Dark Accent Color"
+msgstr "Dunkle Akzentfarbe"
+
+msgid "Dark Surface Color"
+msgstr "Dunkle Flächenfarbe"
+
+msgid "Dark Text Color"
+msgstr "Dunkle Textfarbe"
+
+msgid "Dark Inverse Text Color"
+msgstr "Dunkle invertierte Textfarbe"
+
+msgid "Dark Gradient Color 1"
+msgstr "Dunkle Verlaufsfarbe 1"
+
+msgid "Dark Gradient Color 2"
+msgstr "Dunkle Verlaufsfarbe 2"
+
+msgid "Dark Gradient Color 3"
+msgstr "Dunkle Verlaufsfarbe 3"
+
+msgid "Dark Hero Overlay Opacity"
+msgstr "Deckkraft des dunklen Hero-Overlays"
+
+msgid "Google Font"
+msgstr "Google-Schriftart"
+
+msgid "Gradient Angle"
+msgstr "Verlaufswinkel"
+
+msgid "Hero Overlay Opacity"
+msgstr "Deckkraft des Hero-Overlays"
+
+msgid "Behavior"
+msgstr "Verhalten"
+
+msgid "Enable Parallax"
+msgstr "Parallax aktivieren"
+
+msgid "Disable Parallax on Mobile"
+msgstr "Parallax auf Mobilgeräten deaktivieren"
+
+msgid "Sticky Header"
+msgstr "Sticky Header"
+
+msgid "Smooth Scroll"
+msgstr "Sanftes Scrollen"
+
+msgid "Parallax Speed"
+msgstr "Parallax-Geschwindigkeit"
+
+msgid "Content Width"
+msgstr "Inhaltsbreite"
