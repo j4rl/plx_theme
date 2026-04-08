@@ -97,6 +97,7 @@ function plx_parallax_get_default($key) {
 }
 
 function plx_parallax_theme_setup() {
+    load_theme_textdomain('plx-parallax', get_template_directory() . '/languages');
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_image_size('plx-featured-page', 1200, 900, true);
@@ -461,6 +462,11 @@ function plx_parallax_enqueue_customizer_controls_assets() {
         $version,
         true
     );
+
+    wp_localize_script('plx-parallax-customizer-controls', 'plxCustomizerControls', array(
+        'slotLabel'      => __('Slot %d', 'plx-parallax'),
+        'noPageSelected' => __('No page selected', 'plx-parallax'),
+    ));
 }
 add_action('customize_controls_enqueue_scripts', 'plx_parallax_enqueue_customizer_controls_assets');
 
@@ -474,6 +480,10 @@ function plx_parallax_enqueue_customizer_preview_assets() {
         $version,
         true
     );
+
+    wp_localize_script('plx-parallax-customizer-preview', 'plxCustomizerPreview', array(
+        'editHint' => __('Click to edit', 'plx-parallax'),
+    ));
 }
 add_action('customize_preview_init', 'plx_parallax_enqueue_customizer_preview_assets');
 
@@ -488,6 +498,74 @@ function plx_parallax_excerpt_more() {
     return '...';
 }
 add_filter('excerpt_more', 'plx_parallax_excerpt_more');
+
+function plx_parallax_register_support_settings() {
+    register_setting('plx_parallax_support', 'plx_parallax_paypal_url', array(
+        'type'              => 'string',
+        'sanitize_callback' => 'esc_url_raw',
+        'default'           => '',
+    ));
+}
+add_action('admin_init', 'plx_parallax_register_support_settings');
+
+function plx_parallax_add_admin_menu() {
+    add_theme_page(
+        __('Support Theme', 'plx-parallax'),
+        __('Support Theme', 'plx-parallax'),
+        'manage_options',
+        'plx-parallax-support',
+        'plx_parallax_render_support_page'
+    );
+}
+add_action('admin_menu', 'plx_parallax_add_admin_menu');
+
+function plx_parallax_render_support_page() {
+    if (! current_user_can('manage_options')) {
+        return;
+    }
+
+    $paypal_url = get_option('plx_parallax_paypal_url', '');
+    ?>
+    <div class="wrap">
+        <h1><?php esc_html_e('Support Jarl Parallax', 'plx-parallax'); ?></h1>
+        <p><?php esc_html_e('Add your PayPal donation link here. The admin page will then show a donation button that opens the saved PayPal URL.', 'plx-parallax'); ?></p>
+
+        <form action="options.php" method="post">
+            <?php settings_fields('plx_parallax_support'); ?>
+            <table class="form-table" role="presentation">
+                <tr>
+                    <th scope="row">
+                        <label for="plx_parallax_paypal_url"><?php esc_html_e('PayPal donation URL', 'plx-parallax'); ?></label>
+                    </th>
+                    <td>
+                        <input
+                            type="url"
+                            class="regular-text"
+                            id="plx_parallax_paypal_url"
+                            name="plx_parallax_paypal_url"
+                            value="<?php echo esc_attr($paypal_url); ?>"
+                            placeholder="https://paypal.me/yourname"
+                        >
+                        <p class="description"><?php esc_html_e('Use a full PayPal link, for example a PayPal.Me URL or a hosted donation URL.', 'plx-parallax'); ?></p>
+                    </td>
+                </tr>
+            </table>
+            <?php submit_button(__('Save Donation Link', 'plx-parallax')); ?>
+        </form>
+
+        <?php if (! empty($paypal_url)) : ?>
+            <hr>
+            <h2><?php esc_html_e('Preview', 'plx-parallax'); ?></h2>
+            <p><?php esc_html_e('When this link is set, administrators can use the button below to open the donation page.', 'plx-parallax'); ?></p>
+            <p>
+                <a class="button button-primary button-hero" href="<?php echo esc_url($paypal_url); ?>" target="_blank" rel="noopener noreferrer">
+                    <?php esc_html_e('Donate with PayPal', 'plx-parallax'); ?>
+                </a>
+            </p>
+        <?php endif; ?>
+    </div>
+    <?php
+}
 
 function plx_parallax_fallback_menu() {
     echo '<ul>';

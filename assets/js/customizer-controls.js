@@ -1,19 +1,29 @@
 (function ($) {
+  var strings = window.plxCustomizerControls || {};
+
+  function getBaseSlotLabel(slot) {
+    if (strings.slotLabel) {
+      return strings.slotLabel.replace('%d', slot);
+    }
+
+    return 'Slot ' + slot;
+  }
+
   function getSlotLabel(slot) {
     var select = $('#customize-control-plx_featured_page_' + slot + '_id select');
 
     if (!select.length) {
-      return 'Slot ' + slot;
+      return getBaseSlotLabel(slot);
     }
 
     var selectedText = select.find('option:selected').text();
     var selectedVal = select.val();
 
     if (!selectedVal || selectedVal === '0') {
-      return 'Slot ' + slot + ' - No page selected';
+      return getBaseSlotLabel(slot) + ' - ' + (strings.noPageSelected || 'No page selected');
     }
 
-    return 'Slot ' + slot + ' - ' + selectedText;
+    return getBaseSlotLabel(slot) + ' - ' + selectedText;
   }
 
   function updateSortableLabels() {

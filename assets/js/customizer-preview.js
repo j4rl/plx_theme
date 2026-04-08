@@ -1,4 +1,6 @@
 (function ($) {
+  var strings = window.plxCustomizerPreview || {};
+
   function setText(selector, value) {
     $(selector).text(value);
   }
@@ -25,6 +27,75 @@
     wp.customize(settingId, function (setting) {
       setting.bind(function (value) {
         setAttr(selector, attr, value);
+      });
+    });
+  }
+
+  function normalizeEditableValue(element) {
+    return $(element).text().replace(/\s+\n/g, '\n').replace(/\n\s+/g, '\n').trim();
+  }
+
+  function injectEditableStyles() {
+    if (document.getElementById('plx-live-edit-styles')) {
+      return;
+    }
+
+    var style = document.createElement('style');
+    style.id = 'plx-live-edit-styles';
+    style.textContent = '' +
+      '[data-plx-setting]{cursor:text;outline:1px dashed transparent;outline-offset:6px;transition:outline-color 180ms ease,background-color 180ms ease;}' +
+      '[data-plx-setting]:hover{outline-color:rgba(248,250,252,0.45);}' +
+      '[data-plx-setting].is-plx-editing{outline-color:#f97316;background:rgba(249,115,22,0.12);}' +
+      '[data-plx-setting][contenteditable=\"true\"] a{text-decoration:inherit;}';
+    document.head.appendChild(style);
+  }
+
+  function initLiveEditing() {
+    injectEditableStyles();
+
+    $('[data-plx-setting]').each(function () {
+      var element = this;
+      var settingId = element.getAttribute('data-plx-setting');
+      var multiline = element.getAttribute('data-plx-multiline') === 'true';
+
+      if (!settingId) {
+        return;
+      }
+
+      element.setAttribute('contenteditable', 'true');
+      element.setAttribute('spellcheck', 'false');
+      element.setAttribute('title', strings.editHint || 'Click to edit');
+
+      $(element).on('focus', function () {
+        $(element).addClass('is-plx-editing');
+      });
+
+      $(element).on('blur', function () {
+        $(element).removeClass('is-plx-editing');
+
+        wp.customize(settingId, function (setting) {
+          setting.set(normalizeEditableValue(element));
+        });
+      });
+
+      $(element).on('keydown', function (event) {
+        if (!multiline && event.key === 'Enter') {
+          event.preventDefault();
+          element.blur();
+        }
+      });
+
+      $(element).on('click', function (event) {
+        if (element.tagName === 'A') {
+          event.preventDefault();
+        }
+      });
+
+      $(element).on('paste', function (event) {
+        event.preventDefault();
+
+        var text = (event.originalEvent || event).clipboardData.getData('text/plain');
+        document.execCommand('insertText', false, text);
       });
     });
   }
@@ -71,5 +142,7 @@
     bindText('plx_cta_button_text', '.js-plx-cta-button');
     bindAttr('plx_cta_button_url', '.js-plx-cta-button', 'href');
     bindText('plx_footer_tagline', '.js-plx-footer-tagline');
+
+    initLiveEditing();
   });
 }(jQuery));
